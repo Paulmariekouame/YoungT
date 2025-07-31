@@ -1,0 +1,346 @@
+/* Young Talent - Styles CSS */
+
+:root {
+    --orange-primary: #f97316;
+    --orange-secondary: #ea580c;
+    --pink-primary: #ec4899;
+    --pink-secondary: #db2777;
+    --purple-primary: #8b5cf6;
+    --blue-primary: #3b82f6;
+    --green-primary: #10b981;
+    --dark-bg: #0f172a;
+    --dark-card: rgba(15, 23, 42, 0.8);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+/* Base Styles */
+body {
+    background: linear-gradient(135deg, #581c87 0%, #1e3a8a 50%, #312e81 100%);
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #ffffff;
+}
+
+.auth-page {
+    background: linear-gradient(135deg, #581c87 0%, #1e3a8a 50%, #312e81 100%);
+    background-attachment: fixed;
+}
+
+/* Navigation */
+.bg-gradient-primary {
+    background: linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.2) 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.navbar-brand .logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, var(--orange-primary), var(--pink-primary));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* Buttons */
+.btn-gradient-orange {
+    background: linear-gradient(45deg, var(--orange-primary), var(--pink-primary));
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-orange:hover {
+    background: linear-gradient(45deg, var(--orange-secondary), var(--pink-secondary));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+    color: white;
+}
+
+.btn-outline-orange {
+    border: 2px solid var(--orange-primary);
+    color: var(--orange-primary);
+    background: transparent;
+    font-weight: 600;
+}
+
+.btn-outline-orange:hover {
+    background: var(--orange-primary);
+    color: white;
+}
+
+/* Cards */
+.bg-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                url('/placeholder.svg?height=800&width=1200') center/cover;
+    min-height: 100vh;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(88,28,135,0.8) 0%, rgba(30,58,138,0.8) 50%, rgba(49,46,129,0.8) 100%);
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, var(--orange-primary), var(--pink-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Feature Icons */
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+}
+
+/* Colors */
+.text-orange { color: var(--orange-primary) !important; }
+.text-pink { color: var(--pink-primary) !important; }
+.text-purple { color: var(--purple-primary) !important; }
+.text-blue { color: var(--blue-primary) !important; }
+.text-green { color: var(--green-primary) !important; }
+
+.bg-orange { background-color: var(--orange-primary) !important; }
+.bg-pink { background-color: var(--pink-primary) !important; }
+.bg-purple { background-color: var(--purple-primary) !important; }
+.bg-blue { background-color: var(--blue-primary) !important; }
+.bg-green { background-color: var(--green-primary) !important; }
+
+/* Dashboard */
+.sidebar {
+    min-height: calc(100vh - 76px);
+    position: sticky;
+    top: 76px;
+}
+
+.main-content {
+    background: var(--dark-bg);
+    min-height: calc(100vh - 76px);
+}
+
+.nav-pills .nav-link {
+    color: rgba(255,255,255,0.7);
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-pills .nav-link.active {
+    background: linear-gradient(45deg, var(--orange-primary), var(--pink-primary));
+    color: white;
+}
+
+/* Music Player */
+.music-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 15px 0;
+    z-index: 1000;
+}
+
+.track-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.player-controls button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Forms */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--orange-primary);
+    box-shadow: 0 0 0 0.2rem rgba(249, 115, 22, 0.25);
+}
+
+/* Progress Bars */
+.progress {
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+}
+
+.progress-bar {
+    background: linear-gradient(45deg, var(--orange-primary), var(--pink-primary));
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    .sidebar {
+        position: relative;
+        min-height: auto;
+    }
+    
+    .main-content {
+        min-height: auto;
+    }
+    
+    .music-player {
+        padding: 10px 0;
+    }
+    
+    .track-image {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, var(--orange-primary), var(--pink-primary));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, var(--orange-secondary), var(--pink-secondary));
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.spinner-border-orange {
+    border-color: var(--orange-primary);
+    border-right-color: transparent;
+}
+
+/* Chart Placeholder */
+.chart-placeholder {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Activity Items */
+.activity-item {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 6px 12px;
+}
+
+/* Dropdowns */
+.dropdown-menu {
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown-item {
+    color: rgba(255,255,255,0.8);
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+/* Modals */
+.modal-content {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Utilities */
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.box-shadow {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.border-gradient {
+    border: 2px solid;
+    border-image: linear-gradient(45deg, var(--orange-primary), var(--pink-primary)) 1;
+}
