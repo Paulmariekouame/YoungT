@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcasts - Young Talent</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h1><a href="index.html">Young Talent</a></h1>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="discover.html" class="nav-link">Découvrir</a>
+                    <a href="podcasts.html" class="nav-link active">Podcasts</a>
+                    <a href="artists.html" class="nav-link">Artistes</a>
+                </nav>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-outline">Connexion</a>
+                    <a href="sign-up.html" class="btn btn-primary">Rejoindre</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="podcasts-page">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="page-hero">
+                <h2 class="page-title">
+                    <span class="gradient-text">Podcasts</span> Musicaux
+                </h2>
+                <p class="page-description">
+                    Écoutez les histoires, conseils et réflexions de nos artistes talentueux
+                </p>
+            </section>
+
+            <!-- Podcasts List -->
+            <section class="podcasts-section">
+                <div class="podcasts-list">
+                    <div class="podcast-item">
+                        <div class="podcast-image">
+                            <img src="https://via.placeholder.com/150x150?text=Podcast" alt="Mon Parcours Musical">
+                        </div>
+                        <div class="podcast-content">
+                            <div class="podcast-header">
+                                <h3>Mon Parcours Musical</h3>
+                                <a href="artist.html?id=1" class="host-link">par MC Flow</a>
+                            </div>
+                            <p class="podcast-description">
+                                Je raconte mon histoire, mes débuts dans le rap et mes inspirations.
+                            </p>
+                            <div class="podcast-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>45:32</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>8.2K écoutes</span>
+                                </div>
+                            </div>
+                            <div class="podcast-actions">
+                                <button class="btn btn-primary" onclick="togglePlay('podcast-1')">
+                                    <i class="fas fa-play" id="play-icon-podcast-1"></i>
+                                    Écouter
+                                </button>
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fas fa-share"></i>
+                                    Partager
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="podcast-item">
+                        <div class="podcast-image">
+                            <img src="https://via.placeholder.com/150x150?text=Podcast" alt="L'Art de la Mélodie">
+                        </div>
+                        <div class="podcast-content">
+                            <div class="podcast-header">
+                                <h3>L'Art de la Mélodie</h3>
+                                <a href="artist.html?id=2" class="host-link">par Luna Voice</a>
+                            </div>
+                            <p class="podcast-description">
+                                Comment créer des mélodies qui touchent l'âme.
+                            </p>
+                            <div class="podcast-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>38:45</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>5.4K écoutes</span>
+                                </div>
+                            </div>
+                            <div class="podcast-actions">
+                                <button class="btn btn-primary" onclick="togglePlay('podcast-2')">
+                                    <i class="fas fa-play" id="play-icon-podcast-2"></i>
+                                    Écouter
+                                </button>
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fas fa-share"></i>
+                                    Partager
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h3>Vous avez une histoire à raconter ?</h3>
+                <p>Créez votre propre podcast et partagez votre expérience avec la communauté</p>
+                <a href="sign-up.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-microphone"></i>
+                    Créer un Podcast
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
