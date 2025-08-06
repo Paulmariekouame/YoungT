@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Young Talent</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <!-- Logo -->
+        <div class="auth-logo">
+            <a href="index.html" class="logo-link">
+                <div class="logo-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h1>Young Talent</h1>
+            </a>
+            <p>Votre carrière musicale commence ici</p>
+        </div>
+
+        <!-- Auth Card -->
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Bienvenue</h2>
+                <p>Connectez-vous ou créez votre compte artiste</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="showAuthTab('login')">Connexion</button>
+                <button class="auth-tab" onclick="showAuthTab('register')">Inscription</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login" class="auth-form active">
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="loginEmail" placeholder="votre@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Mot de passe</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember">
+                            <span class="checkmark"></span>
+                            Se souvenir de moi
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="loginBtn">
+                        Se connecter
+                    </button>
+                </form>
+                <div class="auth-footer">
+                    <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register" class="auth-form">
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="registerName">Nom d'artiste</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="registerName" placeholder="Votre nom d'artiste" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="registerEmail" placeholder="votre@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Mot de passe</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="registerPassword" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Type de compte</label>
+                        <div class="account-types">
+                            <label class="account-type">
+                                <input type="radio" name="accountType" value="artist" checked>
+                                <div class="account-option">
+                                    <i class="fas fa-microphone"></i>
+                                    <span>Artiste</span>
+                                </div>
+                            </label>
+                            <label class="account-type">
+                                <input type="radio" name="accountType" value="fan">
+                                <div class="account-option">
+                                    <i class="fas fa-users"></i>
+                                    <span>Fan</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" required>
+                            <span class="checkmark"></span>
+                            J'accepte les conditions d'utilisation
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-secondary btn-full" id="registerBtn">
+                        Créer mon compte
+                    </button>
+                </form>
+            </div>
+
+            <div class="auth-terms">
+                <p>En continuant, vous acceptez nos <a href="#">conditions d'utilisation</a></p>
+            </div>
+        </div>
+
+        <div class="auth-back">
+            <a href="index.html">← Retour à l'accueil</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
