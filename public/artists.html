@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistes - Young Talent</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h1><a href="index.html">Young Talent</a></h1>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="discover.html" class="nav-link">Découvrir</a>
+                    <a href="podcasts.html" class="nav-link">Podcasts</a>
+                    <a href="artists.html" class="nav-link active">Artistes</a>
+                </nav>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-outline">Connexion</a>
+                    <a href="sign-up.html" class="btn btn-primary">Rejoindre</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="artists-page">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="page-hero">
+                <h2 class="page-title">
+                    Nos <span class="gradient-text">Artistes</span>
+                </h2>
+                <p class="page-description">
+                    Découvrez les talents émergents qui façonnent l'avenir de la musique
+                </p>
+            </section>
+
+            <!-- Artists Grid -->
+            <section class="artists-section">
+                <div class="artists-grid">
+                    <div class="artist-card-detailed">
+                        <div class="artist-image">
+                            <img src="https://via.placeholder.com/200x200?text=MC+Flow" alt="MC Flow">
+                            <div class="verified-badge">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="artist-info">
+                            <h4>MC Flow</h4>
+                            <span class="genre-badge">Rap</span>
+                            <p class="artist-bio">Rappeur parisien passionné par les mots et les rythmes urbains.</p>
+                            <div class="artist-stats">
+                                <div class="stat">
+                                    <span class="stat-value">12.5K</span>
+                                    <span class="stat-label">Followers</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">24</span>
+                                    <span class="stat-label">Titres</span>
+                                </div>
+                            </div>
+                            <a href="artist.html?id=1" class="btn btn-secondary">
+                                <i class="fas fa-users"></i>
+                                Voir Profil
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="artist-card-detailed">
+                        <div class="artist-image">
+                            <img src="https://via.placeholder.com/200x200?text=Luna+Voice" alt="Luna Voice">
+                        </div>
+                        <div class="artist-info">
+                            <h4>Luna Voice</h4>
+                            <span class="genre-badge">R&B</span>
+                            <p class="artist-bio">Chanteuse R&B avec une voix unique et des mélodies envoûtantes.</p>
+                            <div class="artist-stats">
+                                <div class="stat">
+                                    <span class="stat-value">8.3K</span>
+                                    <span class="stat-label">Followers</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">18</span>
+                                    <span class="stat-label">Titres</span>
+                                </div>
+                            </div>
+                            <a href="artist.html?id=2" class="btn btn-secondary">
+                                <i class="fas fa-users"></i>
+                                Voir Profil
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="artist-card-detailed">
+                        <div class="artist-image">
+                            <img src="https://via.placeholder.com/200x200?text=Beat+Master" alt="Beat Master">
+                            <div class="verified-badge">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="artist-info">
+                            <h4>Beat Master</h4>
+                            <span class="genre-badge">Hip-Hop</span>
+                            <p class="artist-bio">Producteur et rappeur, créateur de beats qui font bouger les foules.</p>
+                            <div class="artist-stats">
+                                <div class="stat">
+                                    <span class="stat-value">15.2K</span>
+                                    <span class="stat-label">Followers</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">32</span>
+                                    <span class="stat-label">Titres</span>
+                                </div>
+                            </div>
+                            <a href="artist.html?id=3" class="btn btn-secondary">
+                                <i class="fas fa-users"></i>
+                                Voir Profil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h3>Vous êtes un artiste ?</h3>
+                <p>Rejoignez notre communauté et partagez votre talent avec le monde</p>
+                <a href="sign-up.html" class="btn btn-primary btn-lg">Devenir Artiste</a>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
