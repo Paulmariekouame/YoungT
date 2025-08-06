@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découvrir - Young Talent</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h1><a href="index.html">Young Talent</a></h1>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="discover.html" class="nav-link active">Découvrir</a>
+                    <a href="podcasts.html" class="nav-link">Podcasts</a>
+                    <a href="artists.html" class="nav-link">Artistes</a>
+                </nav>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-outline">Connexion</a>
+                    <a href="sign-up.html" class="btn btn-primary">Rejoindre</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="discover-page">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="page-hero">
+                <h2 class="page-title">
+                    Découvrez de Nouveaux <span class="gradient-text">Talents</span>
+                </h2>
+                <p class="page-description">
+                    Explorez la musique des artistes émergents et trouvez votre prochain coup de cœur
+                </p>
+            </section>
+
+            <!-- Search and Filters -->
+            <section class="search-section">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Rechercher des titres, artistes..." onkeyup="filterTracks()">
+                </div>
+                <div class="genre-filters">
+                    <button class="filter-btn active" onclick="filterByGenre('Tous')">Tous</button>
+                    <button class="filter-btn" onclick="filterByGenre('Rap')">Rap</button>
+                    <button class="filter-btn" onclick="filterByGenre('R&B')">R&B</button>
+                    <button class="filter-btn" onclick="filterByGenre('Hip-Hop')">Hip-Hop</button>
+                    <button class="filter-btn" onclick="filterByGenre('Electronic')">Electronic</button>
+                </div>
+            </section>
+
+            <!-- Trending Tracks -->
+            <section class="trending-section">
+                <h3>Tendances du Moment</h3>
+                <div class="tracks-list" id="tracksList">
+                    <div class="track-item" data-genre="Rap">
+                        <div class="track-info">
+                            <span class="track-number">1</span>
+                            <img src="https://via.placeholder.com/60x60?text=Track" alt="Rising Star" class="track-image">
+                            <div class="hot-badge">🔥 HOT</div>
+                            <div class="track-details">
+                                <h4>Rising Star</h4>
+                                <a href="artist.html?id=1">MC Flow</a>
+                                <div class="track-meta">
+                                    <span class="genre-badge">Rap</span>
+                                    <span>3:24</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="track-stats">
+                            <div class="stat">
+                                <span>125K</span>
+                                <small>Écoutes</small>
+                            </div>
+                            <div class="stat">
+                                <span>5.2K</span>
+                                <small>Likes</small>
+                            </div>
+                        </div>
+                        <div class="track-actions">
+                            <button class="btn btn-primary btn-sm" onclick="togglePlay('trending-1')">
+                                <i class="fas fa-play" id="play-icon-trending-1"></i>
+                            </button>
+                            <button class="btn-icon">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="btn-icon">
+                                <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="track-item" data-genre="R&B">
+                        <div class="track-info">
+                            <span class="track-number">2</span>
+                            <img src="https://via.placeholder.com/60x60?text=Track" alt="Midnight Dreams" class="track-image">
+                            <div class="track-details">
+                                <h4>Midnight Dreams</h4>
+                                <a href="artist.html?id=2">Luna Voice</a>
+                                <div class="track-meta">
+                                    <span class="genre-badge">R&B</span>
+                                    <span>4:12</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="track-stats">
+                            <div class="stat">
+                                <span>89K</span>
+                                <small>Écoutes</small>
+                            </div>
+                            <div class="stat">
+                                <span>3.8K</span>
+                                <small>Likes</small>
+                            </div>
+                        </div>
+                        <div class="track-actions">
+                            <button class="btn btn-primary btn-sm" onclick="togglePlay('trending-2')">
+                                <i class="fas fa-play" id="play-icon-trending-2"></i>
+                            </button>
+                            <button class="btn-icon">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="btn-icon">
+                                <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="track-item" data-genre="Hip-Hop">
+                        <div class="track-info">
+                            <span class="track-number">3</span>
+                            <img src="https://via.placeholder.com/60x60?text=Track" alt="Street Anthem" class="track-image">
+                            <div class="hot-badge">🔥 HOT</div>
+                            <div class="track-details">
+                                <h4>Street Anthem</h4>
+                                <a href="artist.html?id=3">Beat Master</a>
+                                <div class="track-meta">
+                                    <span class="genre-badge">Hip-Hop</span>
+                                    <span>2:58</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="track-stats">
+                            <div class="stat">
+                                <span>156K</span>
+                                <small>Écoutes</small>
+                            </div>
+                            <div class="stat">
+                                <span>7.1K</span>
+                                <small>Likes</small>
+                            </div>
+                        </div>
+                        <div class="track-actions">
+                            <button class="btn btn-primary btn-sm" onclick="togglePlay('trending-3')">
+                                <i class="fas fa-play" id="play-icon-trending-3"></i>
+                            </button>
+                            <button class="btn-icon">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="btn-icon">
+                                <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
