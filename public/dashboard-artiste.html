@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Artiste - Young Talent</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h1><a href="index.html">Young Talent</a></h1>
+                </div>
+                
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="discover.html" class="nav-link">Découvrir</a>
+                    <a href="artists.html" class="nav-link">Artistes</a>
+                    <a href="podcasts.html" class="nav-link">Podcasts</a>
+                    <a href="dashboard-artist.html" class="nav-link active">Dashboard</a>
+                </nav>
+                
+                <div class="nav-buttons">
+                    <div class="user-menu">
+                        <button class="btn-icon user-avatar" onclick="toggleUserMenu()">
+                            <img src="/placeholder.svg?height=32&width=32" alt="Avatar" class="avatar-img">
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <div class="user-info">
+                                <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
+                                <div>
+                                    <strong>MC Flow</strong>
+                                    <span>Artiste</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user"></i> Mon Profil
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i> Paramètres
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-question-circle"></i> Aide
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="index.html" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i> Déconnexion
+                            </a>
+                        </div>
+                    </div>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h1>Bienvenue, MC Flow</h1>
+                    <p>Gérez votre carrière musicale et connectez-vous avec vos fans</p>
+                </div>
+                <div class="quick-actions">
+                    <button class="btn btn-primary" onclick="showUploadModal()">
+                        <i class="fas fa-upload"></i> Nouveau Titre
+                    </button>
+                    <button class="btn btn-secondary" onclick="showPodcastModal()">
+                        <i class="fas fa-microphone"></i> Nouveau Podcast
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Overview -->
+            <section class="stats-overview">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>1.2M</h3>
+                            <p>Écoutes totales</p>
+                            <span class="stat-change positive">+12% ce mois</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>15.3K</h3>
+                            <p>Followers</p>
+                            <span class="stat-change positive">+8% ce mois</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>24</h3>
+                            <p>Titres publiés</p>
+                            <span class="stat-change neutral">+2 ce mois</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-euro-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>€2,450</h3>
+                            <p>Revenus ce mois</p>
+                            <span class="stat-change positive">+15% ce mois</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Tabs -->
+            <section class="dashboard-tabs">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="showDashboardTab('overview')">
+                        <i class="fas fa-chart-line"></i> Vue d'ensemble
+                    </button>
+                    <button class="tab-btn" onclick="showDashboardTab('music')">
+                        <i class="fas fa-music"></i> Ma Musique
+                    </button>
+                    <button class="tab-btn" onclick="showDashboardTab('podcasts')">
+                        <i class="fas fa-microphone"></i> Mes Podcasts
+                    </button>
+                    <button class="tab-btn" onclick="showDashboardTab('analytics')">
+                        <i class="fas fa-chart-bar"></i> Analytics
+                    </button>
+                    <button class="tab-btn" onclick="showDashboardTab('fans')">
+                        <i class="fas fa-heart"></i> Mes Fans
+                    </button>
+                    <button class="tab-btn" onclick="showDashboardTab('earnings')">
+                        <i class="fas fa-wallet"></i> Revenus
+                    </button>
+                </div>
+
+                <!-- Overview Tab -->
+                <div id="overview" class="tab-content active">
+                    <div class="overview-grid">
+                        <!-- Recent Activity -->
+                        <div class="activity-card">
+                            <h3>Activité Récente</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>"Street Dreams"</strong> a été écouté 1,234 fois</p>
+                                        <span>Il y a 2 heures</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>45 nouveaux followers</strong> aujourd'hui</p>
+                                        <span>Il y a 4 heures</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-comment"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>12 nouveaux commentaires</strong> sur vos titres</p>
+                                        <span>Il y a 6 heures</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-share"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>"Urban Flow"</strong> a été partagé 89 fois</p>
+                                        <span>Hier</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Tracks -->
+                        <div class="top-tracks-card">
+                            <h3>Mes Meilleurs Titres</h3>
+                            <div class="top-tracks-list">
+                                <div class="track-rank-item">
+                                    <span class="rank">1</span>
+                                    <div class="track-info">
+                                        <h4>Street Dreams</h4>
+                                        <p>234K écoutes</p>
+                                    </div>
+                                    <div class="track-trend">
+                                        <i class="fas fa-arrow-up"></i>
+                                    </div>
+                                </div>
+                                <div class="track-rank-item">
+                                    <span class="rank">2</span>
+                                    <div class="track-info">
+                                        <h4>Urban Flow</h4>
+                                        <p>189K écoutes</p>
+                                    </div>
+                                    <div class="track-trend">
+                                        <i class="fas fa-arrow-up"></i>
+                                    </div>
+                                </div>
+                                <div class="track-rank-item">
+                                    <span class="rank">3</span>
+                                    <div class="track-info">
+                                        <h4>Night Vibes</h4>
+                                        <p>156K écoutes</p>
+                                    </div>
+                                    <div class="track-trend">
+                                        <i class="fas fa-arrow-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upcoming Events -->
+                        <div class="events-card">
+                            <h3>Événements à Venir</h3>
+                            <div class="events-list">
+                                <div class="event-item">
+                                    <div class="event-date">
+                                        <span class="day">15</span>
+                                        <span class="month">DÉC</span>
+                                    </div>
+                                    <div class="event-info">
+                                        <h4>Concert Live - Zénith Paris</h4>
+                                        <p>Paris, France • 20h00</p>
+                                    </div>
+                                </div>
+                                <div class="event-item">
+                                    <div class="event-date">
+                                        <span class="day">22</span>
+                                        <span class="month">DÉC</span>
+                                    </div>
+                                    <div class="event-info">
+                                        <h4>Interview Radio - Skyrock</h4>
+                                        <p>Paris, France • 14h00</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline btn-sm">Voir tous les événements</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Music Tab -->
+                <div id="music" class="tab-content">
+                    <div class="music-management">
+                        <div class="section-header">
+                            <h3>Ma Discographie</h3>
+                            <button class="btn btn-primary" onclick="showUploadModal()">
+                                <i class="fas fa-plus"></i> Ajouter un titre
+                            </button>
+                        </div>
+                        
+                        <div class="music-filters">
+                            <button class="filter-btn active" onclick="filterMusic('all')">Tous</button>
+                            <button class="filter-btn" onclick="filterMusic('published')">Publiés</button>
+                            <button class="filter-btn" onclick="filterMusic('draft')">Brouillons</button>
+                            <button class="filter-btn" onclick="filterMusic('pending')">En attente</button>
+                        </div>
+
+                        <div class="music-list">
+                            <div class="music-item" data-status="published">
+                                <div class="music-cover">
+                                    <img src="/placeholder.svg?height=60&width=60" alt="Cover">
+                                    <button class="play-btn" onclick="togglePlay('track1')">
+                                        <i class="fas fa-play" id="play-icon-track1"></i>
+                                    </button>
+                                </div>
+                                <div class="music-info">
+                                    <h4>Street Dreams</h4>
+                                    <p>Publié le 15 Nov 2024</p>
+                                    <div class="music-stats">
+                                        <span><i class="fas fa-play"></i> 234K</span>
+                                        <span><i class="fas fa-heart"></i> 12.5K</span>
+                                        <span><i class="fas fa-share"></i> 2.1K</span>
+                                    </div>
+                                </div>
+                                <div class="music-status">
+                                    <span class="status-badge published">Publié</span>
+                                </div>
+                                <div class="music-actions">
+                                    <button class="btn-icon" onclick="editTrack('track1')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon" onclick="shareTrack('track1')">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                    <button class="btn-icon" onclick="deleteTrack('track1')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="music-item" data-status="published">
+                                <div class="music-cover">
+                                    <img src="/placeholder.svg?height=60&width=60" alt="Cover">
+                                    <button class="play-btn" onclick="togglePlay('track2')">
+                                        <i class="fas fa-play" id="play-icon-track2"></i>
+                                    </button>
+                                </div>
+                                <div class="music-info">
+                                    <h4>Urban Flow</h4>
+                                    <p>Publié le 8 Nov 2024</p>
+                                    <div class="music-stats">
+                                        <span><i class="fas fa-play"></i> 189K</span>
+                                        <span><i class="fas fa-heart"></i> 9.8K</span>
+                                        <span><i class="fas fa-share"></i> 1.7K</span>
+                                    </div>
+                                </div>
+                                <div class="music-status">
+                                    <span class="status-badge published">Publié</span>
+                                </div>
+                                <div class="music-actions">
+                                    <button class="btn-icon" onclick="editTrack('track2')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon" onclick="shareTrack('track2')">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                    <button class="btn-icon" onclick="deleteTrack('track2')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="music-item" data-status="draft">
+                                <div class="music-cover">
+                                    <img src="/placeholder.svg?height=60&width=60" alt="Cover">
+                                    <button class="play-btn" onclick="togglePlay('track3')">
+                                        <i class="fas fa-play" id="play-icon-track3"></i>
+                                    </button>
+                                </div>
+                                <div class="music-info">
+                                    <h4>Midnight Thoughts</h4>
+                                    <p>Brouillon • Modifié le 12 Nov 2024</p>
+                                    <div class="music-stats">
+                                        <span><i class="fas fa-clock"></i> En cours</span>
+                                    </div>
+                                </div>
+                                <div class="music-status">
+                                    <span class="status-badge draft">Brouillon</span>
+                                </div>
+                                <div class="music-actions">
+                                    <button class="btn-icon" onclick="editTrack('track3')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon" onclick="publishTrack('track3')">
+                                        <i class="fas fa-upload"></i>
+                                    </button>
+                                    <button class="btn-icon" onclick="deleteTrack('track3')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Podcasts Tab -->
+                <div id="podcasts" class="tab-content">
+                    <div class="podcasts-management">
+                        <div class="section-header">
+                            <h3>Mes Podcasts</h3>
+                            <button class="btn btn-primary" onclick="showPodcastModal()">
+                                <i class="fas fa-plus"></i> Nouveau Podcast
+                            </button>
+                        </div>
+
+                        <div class="podcasts-list">
+                            <div class="podcast-item-dashboard">
+                                <div class="podcast-cover">
+                                    <img src="/placeholder.svg?height=80&width=80" alt="Podcast Cover">
+                                </div>
+                                <div class="podcast-info">
+                                    <h4>Flow Sessions #12</h4>
+                                    <p>Publié le 10 Nov 2024 • 45 min</p>
+                                    <div class="podcast-stats">
+                                        <span><i class="fas fa-play"></i> 5.2K écoutes</span>
+                                        <span><i class="fas fa-comment"></i> 89 commentaires</span>
+                                    </div>
+                                </div>
+                                <div class="podcast-actions">
+                                    <button class="btn-icon" onclick="editPodcast('podcast1')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon" onclick="sharePodcast('podcast1')">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                    <button class="btn-icon" onclick="deletePodcast('podcast1')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="podcast-item-dashboard">
+                                <div class="podcast-cover">
+                                    <img src="/placeholder.svg?height=80&width=80" alt="Podcast Cover">
+                                </div>
+                                <div class="podcast-info">
+                                    <h4>Behind the Beats #8</h4>
+                                    <p>Publié le 3 Nov 2024 • 38 min</p>
+                                    <div class="podcast-stats">
+                                        <span><i class="fas fa-play"></i> 3.8K écoutes</span>
+                                        <span><i class="fas fa-comment"></i> 67 commentaires</span>
+                                    </div>
+                                </div>
+                                <div class="podcast-actions">
+                                    <button class="btn-icon" onclick="editPodcast('podcast2')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon" onclick="sharePodcast('podcast2')">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                    <button class="btn-icon" onclick="deletePodcast('podcast2')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Tab -->
+                <div id="analytics" class="tab-content">
+                    <div class="analytics-dashboard">
+                        <div class="analytics-header">
+                            <h3>Analytics & Statistiques</h3>
+                            <div class="date-filter">
+                                <select id="analyticsRange">
+                                    <option value="7">7 derniers jours</option>
+                                    <option value="30" selected>30 derniers jours</option>
+                                    <option value="90">3 derniers mois</option>
+                                    <option value="365">12 derniers mois</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="analytics-grid">
+                            <div class="chart-card">
+                                <h4>Écoutes par Jour</h4>
+                                <div class="chart-placeholder">
+                                    <canvas id="playsChart" width="400" height="200"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="chart-card">
+                                <h4>Croissance des Followers</h4>
+                                <div class="chart-placeholder">
+                                    <canvas id="followersChart" width="400" height="200"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="demographics-card">
+                                <h4>Démographie des Auditeurs</h4>
+                                <div class="demographics-list">
+                                    <div class="demo-item">
+                                        <span class="demo-label">18-24 ans</span>
+                                        <div class="demo-bar">
+                                            <div class="demo-fill" style="width: 45%"></div>
+                                        </div>
+                                        <span class="demo-percent">45%</span>
+                                    </div>
+                                    <div class="demo-item">
+                                        <span class="demo-label">25-34 ans</span>
+                                        <div class="demo-bar">
+                                            <div class="demo-fill" style="width: 35%"></div>
+                                        </div>
+                                        <span class="demo-percent">35%</span>
+                                    </div>
+                                    <div class="demo-item">
+                                        <span class="demo-label">35-44 ans</span>
+                                        <div class="demo-bar">
+                                            <div class="demo-fill" style="width: 15%"></div>
+                                        </div>
+                                        <span class="demo-percent">15%</span>
+                                    </div>
+                                    <div class="demo-item">
+                                        <span class="demo-label">45+ ans</span>
+                                        <div class="demo-bar">
+                                            <div class="demo-fill" style="width: 5%"></div>
+                                        </div>
+                                        <span class="demo-percent">5%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="locations-card">
+                                <h4>Top Localisations</h4>
+                                <div class="locations-list">
+                                    <div class="location-item">
+                                        <span class="location-flag">🇫🇷</span>
+                                        <span class="location-name">France</span>
+                                        <span class="location-percent">68%</span>
+                                    </div>
+                                    <div class="location-item">
+                                        <span class="location-flag">🇧🇪</span>
+                                        <span class="location-name">Belgique</span>
+                                        <span class="location-percent">12%</span>
+                                    </div>
+                                    <div class="location-item">
+                                        <span class="location-flag">🇨🇦</span>
+                                        <span class="location-name">Canada</span>
+                                        <span class="location-percent">8%</span>
+                                    </div>
+                                    <div class="location-item">
+                                        <span class="location-flag">🇨🇭</span>
+                                        <span class="location-name">Suisse</span>
+                                        <span class="location-percent">7%</span>
+                                    </div>
+                                    <div class="location-item">
+                                        <span class="location-flag">🇲🇦</span>
+                                        <span class="location-name">Maroc</span>
+                                        <span class="location-percent">5%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fans Tab -->
+                <div id="fans" class="tab-content">
+                    <div class="fans-management">
+                        <div class="section-header">
+                            <h3>Ma Communauté</h3>
+                            <div class="fans-stats">
+                                <span><strong>15.3K</strong> Followers</span>
+                                <span><strong>2.1K</strong> Fans actifs</span>
+                            </div>
+                        </div>
+
+                        <div class="fans-tabs">
+                            <button class="filter-btn active" onclick="filterFans('recent')">Récents</button>
+                            <button class="filter-btn" onclick="filterFans('active')">Plus Actifs</button>
+                            <button class="filter-btn" onclick="filterFans('supporters')">Top Supporters</button>
+                        </div>
+
+                        <div class="fans-list">
+                            <div class="fan-item">
+                                <div class="fan-avatar">
+                                    <img src="/placeholder.svg?height=40&width=40" alt="Fan">
+                                </div>
+                                <div class="fan-info">
+                                    <h4>Sarah M.</h4>
+                                    <p>Vous suit depuis 3 mois</p>
+                                    <div class="fan-activity">
+                                        <span><i class="fas fa-play"></i> 234 écoutes</span>
+                                        <span><i class="fas fa-share"></i> 12 partages</span>
+                                    </div>
+                                </div>
+                                <div class="fan-actions">
+                                    <button class="btn btn-sm btn-outline">Message</button>
+                                </div>
+                            </div>
+
+                            <div class="fan-item">
+                                <div class="fan-avatar">
+                                    <img src="/placeholder.svg?height=40&width=40" alt="Fan">
+                                </div>
+                                <div class="fan-info">
+                                    <h4>Kevin L.</h4>
+                                    <p>Vous suit depuis 1 mois</p>
+                                    <div class="fan-activity">
+                                        <span><i class="fas fa-play"></i> 189 écoutes</span>
+                                        <span><i class="fas fa-share"></i> 8 partages</span>
+                                    </div>
+                                </div>
+                                <div class="fan-actions">
+                                    <button class="btn btn-sm btn-outline">Message</button>
+                                </div>
+                            </div>
+
+                            <div class="fan-item">
+                                <div class="fan-avatar">
+                                    <img src="/placeholder.svg?height=40&width=40" alt="Fan">
+                                </div>
+                                <div class="fan-info">
+                                    <h4>Emma R.</h4>
+                                    <p>Vous suit depuis 6 mois</p>
+                                    <div class="fan-activity">
+                                        <span><i class="fas fa-play"></i> 456 écoutes</span>
+                                        <span><i class="fas fa-share"></i> 23 partages</span>
+                                    </div>
+                                </div>
+                                <div class="fan-actions">
+                                    <button class="btn btn-sm btn-outline">Message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Earnings Tab -->
+                <div id="earnings" class="tab-content">
+                    <div class="earnings-dashboard">
+                        <div class="earnings-header">
+                            <h3>Revenus & Monétisation</h3>
+                            <div class="earnings-summary">
+                                <div class="earning-stat">
+                                    <h4>€2,450</h4>
+                                    <p>Ce mois</p>
+                                </div>
+                                <div class="earning-stat">
+                                    <h4>€18,750</h4>
+                                    <p>Cette année</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="earnings-breakdown">
+                            <div class="revenue-sources">
+                                <h4>Sources de Revenus</h4>
+                                <div class="revenue-list">
+                                    <div class="revenue-item">
+                                        <div class="revenue-icon">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="revenue-info">
+                                            <span class="revenue-source">Streaming</span>
+                                            <span class="revenue-amount">€1,850</span>
+                                        </div>
+                                        <div class="revenue-percent">75%</div>
+                                    </div>
+                                    <div class="revenue-item">
+                                        <div class="revenue-icon">
+                                            <i class="fas fa-microphone"></i>
+                                        </div>
+                                        <div class="revenue-info">
+                                            <span class="revenue-source">Podcasts</span>
+                                            <span class="revenue-amount">€400</span>
+                                        </div>
+                                        <div class="revenue-percent">16%</div>
+                                    </div>
+                                    <div class="revenue-item">
+                                        <div class="revenue-icon">
+                                            <i class="fas fa-gift"></i>
+                                        </div>
+                                        <div class="revenue-info">
+                                            <span class="revenue-source">Donations</span>
+                                            <span class="revenue-amount">€200</span>
+                                        </div>
+                                        <div class="revenue-percent">9%</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="payout-info">
+                                <h4>Prochains Paiements</h4>
+                                <div class="payout-schedule">
+                                    <div class="payout-item">
+                                        <span class="payout-date">15 Décembre 2024</span>
+                                        <span class="payout-amount">€2,450</span>
+                                    </div>
+                                    <div class="payout-item pending">
+                                        <span class="payout-date">15 Janvier 2025</span>
+                                        <span class="payout-amount">En cours...</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline btn-sm">Configurer les paiements</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content upload-modal">
+            <div class="modal-header">
+                <h3>Ajouter un Nouveau Titre</h3>
+                <button class="modal-close" onclick="closeModal('uploadModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadForm">
+                    <div class="upload-steps">
+                        <div class="upload-step active" id="uploadStep1">
+                            <h4>Informations du Titre</h4>
+                            <div class="form-group">
+                                <label for="trackTitle">Titre *</label>
+                                <input type="text" id="trackTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="trackGenre">Genre *</label>
+                                <select id="trackGenre" required>
+                                    <option value="">Sélectionner un genre</option>
+                                    <option value="rap">Rap</option>
+                                    <option value="rnb">R&B</option>
+                                    <option value="pop">Pop</option>
+                                    <option value="rock">Rock</option>
+                                    <option value="electronic">Électronique</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="trackDescription">Description</label>
+                                <textarea id="trackDescription" rows="3"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="upload-step" id="uploadStep2">
+                            <h4>Fichiers</h4>
+                            <div class="file-upload-area">
+                                <div class="upload-zone" onclick="document.getElementById('audioFile').click()">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Cliquez pour sélectionner votre fichier audio</p>
+                                    <small>MP3, WAV, FLAC (Max 50MB)</small>
+                                </div>
+                                <input type="file" id="audioFile" accept="audio/*" style="display: none;">
+                            </div>
+                            <div class="file-upload-area">
+                                <div class="upload-zone" onclick="document.getElementById('coverFile').click()">
+                                    <i class="fas fa-image"></i>
+                                    <p>Ajouter une pochette (optionnel)</p>
+                                    <small>JPG, PNG (Max 5MB)</small>
+                                </div>
+                                <input type="file" id="coverFile" accept="image/*" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeModal('uploadModal')">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Publier</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Podcast Modal -->
+    <div id="podcastModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nouveau Podcast</h3>
+                <button class="modal-close" onclick="closeModal('podcastModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="podcastForm">
+                    <div class="form-group">
+                        <label for="podcastTitle">Titre du Podcast *</label>
+                        <input type="text" id="podcastTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="podcastDescription">Description *</label>
+                        <textarea id="podcastDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="file-upload-area">
+                        <div class="upload-zone" onclick="document.getElementById('podcastFile').click()">
+                            <i class="fas fa-microphone"></i>
+                            <p>Sélectionner le fichier audio</p>
+                            <small>MP3, WAV (Max 100MB)</small>
+                        </div>
+                        <input type="file" id="podcastFile" accept="audio/*" style="display: none;">
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeModal('podcastModal')">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Publier</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
