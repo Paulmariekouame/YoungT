@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Découvrir - Young Talent</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -16,20 +16,43 @@
                     <div class="logo-icon">
                         <i class="fas fa-music"></i>
                     </div>
-                    <h1><a href="index.html">Young Talent</a></h1>
+                    <h1>Young Talent</h1>
                 </div>
+                
                 <nav class="nav-menu">
-                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="../index.html" class="nav-link ">Accueil</a>
                     <a href="discover.html" class="nav-link active">Découvrir</a>
                     <a href="podcasts.html" class="nav-link">Podcasts</a>
                     <a href="artists.html" class="nav-link">Artistes</a>
                 </nav>
+                
                 <div class="nav-buttons">
                     <a href="login.html" class="btn btn-outline">Connexion</a>
                     <a href="sign-up.html" class="btn btn-primary">Rejoindre</a>
                 </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <nav class="nav-menu">
+                <a href="../index.html" class="nav-link active">Accueil</a>
+                <a href="discover.html" class="nav-link">Découvrir</a>
+                <a href="podcasts.html" class="nav-link">Podcasts</a>
+                <a href="artists.html" class="nav-link">Artistes</a>
+            </nav>
+            
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-outline">Connexion</a>
+                <a href="sign-up.html" class="btn btn-primary">Rejoindre</a>
+            </div>
+        </div>
+        
+        <div class="overlay" id="overlay"></div>
     </header>
 
     <main class="discover-page">
@@ -177,6 +200,50 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+     <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h4>Young Talent</h4>
+                    </div>
+                    <p>La plateforme qui révèle les talents de demain.</p>
+                </div>
+                <div class="footer-section">
+                    <h5>Plateforme</h5>
+                    <ul>
+                        <li><a href="discover.html">Découvrir</a></li>
+                        <li><a href="podcasts.html">Podcasts</a></li>
+                        <li><a href="artists.html">Artistes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">Aide</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>Légal</h5>
+                    <ul>
+                        <li><a href="#">Conditions</a></li>
+                        <li><a href="#">Confidentialité</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Young Talent. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>

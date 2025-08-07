@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Young Talent - Plateforme Musicale pour Jeunes Artistes</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Header -->
@@ -18,21 +18,41 @@
                     </div>
                     <h1>Young Talent</h1>
                 </div>
+                
                 <nav class="nav-menu">
                     <a href="index.html" class="nav-link active">Accueil</a>
-                    <a href="discover.html" class="nav-link">Découvrir</a>
-                    <a href="podcasts.html" class="nav-link">Podcasts</a>
-                    <a href="artists.html" class="nav-link">Artistes</a>
+                    <a href="html/discover.html" class="nav-link">Découvrir</a>
+                    <a href="html/podcasts.html" class="nav-link">Podcasts</a>
+                    <a href="html/artists.html" class="nav-link">Artistes</a>
                 </nav>
+                
                 <div class="nav-buttons">
-                    <a href="login.html" class="btn btn-outline">Connexion</a>
-                    <a href="sign-up.html" class="btn btn-primary">Rejoindre</a>
+                    <a href="html/login.html" class="btn btn-outline">Connexion</a>
+                    <a href="html/sign-up.html" class="btn btn-primary">Rejoindre</a>
                 </div>
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link active">Accueil</a>
+                <a href="html/discover.html" class="nav-link">Découvrir</a>
+                <a href="html/podcasts.html" class="nav-link">Podcasts</a>
+                <a href="html/artists.html" class="nav-link">Artistes</a>
+            </nav>
+            
+            <div class="nav-buttons">
+                <a href="html/login.html" class="btn btn-outline">Connexion</a>
+                <a href="html/sign-up.html" class="btn btn-primary">Rejoindre</a>
+            </div>
+        </div>
+        
+        <div class="overlay" id="overlay"></div>
     </header>
 
     <!-- Hero Section -->
@@ -40,17 +60,18 @@
         <div class="container">
             <div class="hero-content">
                 <h2 class="hero-title">
-                    Votre <span class="gradient-text">Talent</span> Mérite d'Être Entendu
+                    Votre <span style="background: var(--primary-gradient); background-clip: text;
+ -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Talent</span> Mérite d'Être Entendu
                 </h2>
                 <p class="hero-description">
                     La plateforme qui propulse les jeunes artistes vers le succès. Partagez votre musique, créez des podcasts et connectez-vous avec vos fans.
                 </p>
                 <div class="hero-buttons">
-                    <a href="sign-up.html" class="btn btn-primary btn-lg">
+                    <a href="html/sign-up.html" class="btn btn-primary btn-lg">
                         <i class="fas fa-microphone"></i>
                         Devenir Artiste
                     </a>
-                    <a href="discover.html" class="btn btn-outline btn-lg">
+                    <a href="html/discover.html" class="btn btn-outline btn-lg">
                         <i class="fas fa-headphones"></i>
                         Découvrir la Musique
                     </a>
@@ -90,9 +111,9 @@
             <div class="artists-grid">
                 <div class="artist-card">
                     <div class="artist-image">
-                        <img src="https://via.placeholder.com/200x200?text=MC+Flow" alt="MC Flow">
+                        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="MC Flow">
                         <div class="verified-badge">
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-check"></i>
                         </div>
                     </div>
                     <div class="artist-info">
@@ -100,15 +121,15 @@
                         <span class="genre-badge">Rap</span>
                         <div class="artist-stats">
                             <div class="stat">
-                                <span class="stat-value">12.5K</span>
-                                <span class="stat-label">Followers</span>
+                                <div class="stat-value">12.5K</div>
+                                <div class="stat-label">Followers</div>
                             </div>
                             <div class="stat">
-                                <span class="stat-value">24</span>
-                                <span class="stat-label">Titres</span>
+                                <div class="stat-value">24</div>
+                                <div class="stat-label">Titres</div>
                             </div>
                         </div>
-                        <a href="artist.html?id=1" class="btn btn-secondary">
+                        <a href="artist.html?id=1" class="btn btn-outline" style="width: 100%;">
                             <i class="fas fa-users"></i>
                             Voir Profil
                         </a>
@@ -117,22 +138,22 @@
 
                 <div class="artist-card">
                     <div class="artist-image">
-                        <img src="https://via.placeholder.com/200x200?text=Luna+Voice" alt="Luna Voice">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Luna Voice">
                     </div>
                     <div class="artist-info">
                         <h4>Luna Voice</h4>
                         <span class="genre-badge">R&B</span>
                         <div class="artist-stats">
                             <div class="stat">
-                                <span class="stat-value">8.3K</span>
-                                <span class="stat-label">Followers</span>
+                                <div class="stat-value">8.3K</div>
+                                <div class="stat-label">Followers</div>
                             </div>
                             <div class="stat">
-                                <span class="stat-value">18</span>
-                                <span class="stat-label">Titres</span>
+                                <div class="stat-value">18</div>
+                                <div class="stat-label">Titres</div>
                             </div>
                         </div>
-                        <a href="artist.html?id=2" class="btn btn-secondary">
+                        <a href="artist.html?id=2" class="btn btn-outline" style="width: 100%;">
                             <i class="fas fa-users"></i>
                             Voir Profil
                         </a>
@@ -141,9 +162,9 @@
 
                 <div class="artist-card">
                     <div class="artist-image">
-                        <img src="https://via.placeholder.com/200x200?text=Beat+Master" alt="Beat Master">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Beat Master">
                         <div class="verified-badge">
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-check"></i>
                         </div>
                     </div>
                     <div class="artist-info">
@@ -151,15 +172,15 @@
                         <span class="genre-badge">Hip-Hop</span>
                         <div class="artist-stats">
                             <div class="stat">
-                                <span class="stat-value">15.2K</span>
-                                <span class="stat-label">Followers</span>
+                                <div class="stat-value">15.2K</div>
+                                <div class="stat-label">Followers</div>
                             </div>
                             <div class="stat">
-                                <span class="stat-value">32</span>
-                                <span class="stat-label">Titres</span>
+                                <div class="stat-value">32</div>
+                                <div class="stat-label">Titres</div>
                             </div>
                         </div>
-                        <a href="artist.html?id=3" class="btn btn-secondary">
+                        <a href="artist.html?id=3" class="btn btn-outline" style="width: 100%;">
                             <i class="fas fa-users"></i>
                             Voir Profil
                         </a>
@@ -183,10 +204,6 @@
                             <p>MC Flow</p>
                         </div>
                     </div>
-                    <div class="track-stats">
-                        <span>125K écoutes</span>
-                        <span>3:24</span>
-                    </div>
                     <div class="track-actions">
                         <button class="btn-icon" onclick="togglePlay(1)">
                             <i class="fas fa-play" id="play-icon-1"></i>
@@ -208,10 +225,6 @@
                             <h4>Midnight Dreams</h4>
                             <p>Luna Voice</p>
                         </div>
-                    </div>
-                    <div class="track-stats">
-                        <span>89K écoutes</span>
-                        <span>4:12</span>
                     </div>
                     <div class="track-actions">
                         <button class="btn-icon" onclick="togglePlay(2)">
@@ -235,10 +248,6 @@
                             <p>Beat Master</p>
                         </div>
                     </div>
-                    <div class="track-stats">
-                        <span>156K écoutes</span>
-                        <span>2:58</span>
-                    </div>
                     <div class="track-actions">
                         <button class="btn-icon" onclick="togglePlay(3)">
                             <i class="fas fa-play" id="play-icon-3"></i>
@@ -261,7 +270,7 @@
             <h3 class="section-title">Pourquoi Choisir Young Talent ?</h3>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon orange">
+                    <div class="feature-icon">
                         <i class="fas fa-music"></i>
                     </div>
                     <h4>Diffusion Musicale</h4>
@@ -269,7 +278,7 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon purple">
+                    <div class="feature-icon">
                         <i class="fas fa-microphone"></i>
                     </div>
                     <h4>Podcasts</h4>
@@ -277,7 +286,7 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon green">
+                    <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h4>Analytics</h4>
@@ -293,7 +302,7 @@
             <div class="cta-content">
                 <h3>Prêt à Faire Entendre Votre Voix ?</h3>
                 <p>Rejoignez des milliers d'artistes qui font déjà confiance à Young Talent pour développer leur carrière musicale.</p>
-                <a href="sign-up.html" class="btn btn-primary btn-lg">Commencer Maintenant</a>
+                <a href="html/sign-up.html" class="btn btn-primary btn-lg">Commencer Maintenant</a>
             </div>
         </div>
     </section>
@@ -314,9 +323,9 @@
                 <div class="footer-section">
                     <h5>Plateforme</h5>
                     <ul>
-                        <li><a href="discover.html">Découvrir</a></li>
-                        <li><a href="podcasts.html">Podcasts</a></li>
-                        <li><a href="artists.html">Artistes</a></li>
+                        <li><a href="html/discover.html">Découvrir</a></li>
+                        <li><a href="html/podcasts.html">Podcasts</a></li>
+                        <li><a href="html/artists.html">Artistes</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -342,7 +351,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
-

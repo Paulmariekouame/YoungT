@@ -1,0 +1,122 @@
+/* artists.css - Version corrigée avec meilleur contraste */
+
+/* Section Hero */
+.page-hero {
+    text-align: center;
+    padding: 4rem 0 3rem;
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: var(--dark); /* Couleur sombre pour le titre */
+}
+
+.page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary-dark); /* Nouvelle variable pour texte secondaire sombre */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Grille des artistes */
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Carte artiste - version contrastée */
+.artist-card-detailed {
+    background: white; /* Fond blanc au lieu de semi-transparent */
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Ombre plus visible */
+    border: 1px solid #eee; /* Bordure subtile */
+}
+
+.artist-card-detailed:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.artist-bio {
+    color: #555; /* Gris foncé pour meilleure lisibilité */
+    font-size: 0.95rem;
+    margin: 0.5rem 0 1.5rem;
+    line-height: 1.6;
+}
+
+
+
+
+
+/* Bouton */
+.btn-secondary {
+    background: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    margin-top: auto; /* Alignement en bas */
+    align-self: flex-start;
+}
+
+.btn-secondary:hover {
+    background: rgba(108, 92, 231, 0.1);
+}
+
+/* Section CTA */
+.cta-section {
+    text-align: center;
+    padding: 4rem 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: rgba(108, 92, 231, 0.05); /* Fond très léger */
+    border-radius: var(--radius);
+}
+
+.cta-section h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Badge vérifié */
+.verified-badge {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .artist-card-detailed {
+        flex-direction: column;
+    }
+    
+    .artist-image {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-hero {
+        padding: 2rem 0;
+    }
+    
+}
