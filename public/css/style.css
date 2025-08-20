@@ -5,6 +5,7 @@
 @import url('components/header.css');
 @import url('components/footer.css');
 @import url('components/component.css');
+@import url('components/notifications.css');
 
 /* Import des styles de page */
 @import url('style-pages/home.css');
@@ -18,24 +19,25 @@
 @import url('style_base/responsive.css');
 
 
- :root {
-            /* Votre palette de couleurs */
-            --primary-gradient: linear-gradient(45deg, #f97316, #ec4899);
-            --secondary-gradient: linear-gradient(45deg, #8b5cf6, #3b82f6);
-            --bg-gradient: linear-gradient(135deg, #6b46c1 0%, #1e40af 50%, #4338ca 100%);
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.8);
-            --text-muted: rgba(255, 255, 255, 0.6);
-            --card-bg: rgba(255, 255, 255, 0.1);
-            --card-border: rgba(255, 255, 255, 0.2);
-            --success: #10b981;
-            --danger: #ef4444;
-            
-            /* Nouvelles variables pour un design moderne */
-            --dark: #1e1e2e;
-            --light: #f5f7fa;
-            --gray: #e2e8f0;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --radius: 12px;
-        }
+:root {
+  /* Palette de couleurs */
+  --primary-gradient: linear-gradient(45deg, #f97316, #ec4899);
+  --secondary-gradient: linear-gradient(45deg, #8b5cf6, #3b82f6);
+  --bg-gradient: linear-gradient(135deg, #6b46c1 0%, #1e40af 50%, #4338ca 100%);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  
+  /* Nouvelles variables */
+  --dark: #1e1e2e;
+  --light: #f5f7fa;
+  --gray: #e2e8f0;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --radius: 12px;
+}

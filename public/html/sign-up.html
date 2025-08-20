@@ -8,18 +8,8 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="auth-page">
-    <div class="auth-container">
-        <!-- Logo -->
-        <div class="auth-logo">
-            <a href="../index.html" class="logo-link">
-                <div class="logo-icon">
-                    <i class="fas fa-music"></i>
-                </div>
-                <h1>Young Talent</h1>
-            </a>
-            <p>Créez votre compte artiste</p>
-        </div>
 
+    <div class="auth-container">
         <!-- Sign Up Card -->
         <div class="auth-card">
             <div class="auth-header">
@@ -46,11 +36,11 @@
             </div>
 
             <!-- Step 1: Basic Information -->
-            <form class="auth-form step-content active" id="step1" onsubmit="nextStep(event, 2)">
+            <form class="auth-form step-content active" id="step1">
                 <div class="form-group">
                     <label for="firstName">Prénom</label>
                     <div class="input-group">
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-user" style="color: #333;"></i>
                         <input type="text" id="firstName" placeholder="Votre prénom" required>
                     </div>
                 </div>
@@ -58,7 +48,7 @@
                 <div class="form-group">
                     <label for="lastName">Nom</label>
                     <div class="input-group">
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-user" style="color: #333;"></i>
                         <input type="text" id="lastName" placeholder="Votre nom" required>
                     </div>
                 </div>
@@ -66,7 +56,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <div class="input-group">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope" style="color: #333;"></i>
                         <input type="email" id="email" placeholder="votre@email.com" required>
                     </div>
                 </div>
@@ -74,10 +64,10 @@
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
                     <div class="input-group">
-                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-lock" style="color: #333;"></i>
                         <input type="password" id="password" placeholder="••••••••" required minlength="8">
-                        <button type="button" class="password-toggle" onclick="togglePassword('password')">
-                            <i class="fas fa-eye" id="passwordToggle"></i>
+                        <button type="button" class="password-toggle" data-target="password">
+                            <i class="fas fa-eye" id="passwordToggle" style="color: #333;"></i>
                         </button>
                     </div>
                     <div class="password-strength">
@@ -91,10 +81,10 @@
                 <div class="form-group">
                     <label for="confirmPassword">Confirmer le mot de passe</label>
                     <div class="input-group">
-                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-lock" style="color: #333;"></i>
                         <input type="password" id="confirmPassword" placeholder="••••••••" required>
-                        <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
-                            <i class="fas fa-eye" id="confirmPasswordToggle"></i>
+                        <button type="button" class="password-toggle" data-target="confirmPassword">
+                            <i class="fas fa-eye" id="confirmPasswordToggle" style="color: #333;"></i>
                         </button>
                     </div>
                 </div>
@@ -106,22 +96,14 @@
             </form>
 
             <!-- Step 2: Profile Information -->
-            <form class="auth-form step-content" id="step2" onsubmit="nextStep(event, 3)">
-                <div class="form-group">
-                    <label for="artistName">Nom d'artiste</label>
-                    <div class="input-group">
-                        <i class="fas fa-microphone"></i>
-                        <input type="text" id="artistName" placeholder="Votre nom de scène" required>
-                    </div>
-                </div>
-
+            <form class="auth-form step-content" id="step2">
                 <div class="form-group">
                     <label>Type de compte</label>
                     <div class="account-types">
                         <label class="account-type">
                             <input type="radio" name="accountType" value="artist" checked>
                             <div class="account-option">
-                                <i class="fas fa-microphone"></i>
+                                <i class="fas fa-microphone" style="color: #333;"></i>
                                 <div>
                                     <span class="option-title">Artiste</span>
                                     <span class="option-desc">Partagez votre musique</span>
@@ -131,7 +113,7 @@
                         <label class="account-type">
                             <input type="radio" name="accountType" value="fan">
                             <div class="account-option">
-                                <i class="fas fa-users"></i>
+                                <i class="fas fa-users" style="color: #333;"></i>
                                 <div>
                                     <span class="option-title">Fan</span>
                                     <span class="option-desc">Découvrez de nouveaux talents</span>
@@ -141,40 +123,80 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="genre">Genre musical principal</label>
-                    <div class="input-group">
-                        <i class="fas fa-music"></i>
-                        <select id="genre" required>
-                            <option value="">Sélectionnez un genre</option>
-                            <option value="rap">Rap</option>
-                            <option value="rnb">R&B</option>
-                            <option value="hip-hop">Hip-Hop</option>
-                            <option value="pop">Pop</option>
-                            <option value="rock">Rock</option>
-                            <option value="electronic">Electronic</option>
-                            <option value="jazz">Jazz</option>
-                            <option value="reggae">Reggae</option>
-                            <option value="other">Autre</option>
-                        </select>
+                <!-- Artist-specific fields -->
+                <div id="artistFields" class="account-specific">
+                    <div class="form-group">
+                        <label for="artistName">Nom d'artiste</label>
+                        <div class="input-group">
+                            <i class="fas fa-microphone" style="color: #333;"></i>
+                            <input type="text" id="artistName" placeholder="Votre nom de scène" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="genre">Genre musical principal</label>
+                        <div class="input-group">
+                            <i class="fas fa-music" style="color: #333;"></i>
+                            <select id="genre" required>
+                                <option value="">Sélectionnez un genre</option>
+                                <option value="rap">Rap</option>
+                                <option value="rnb">R&B</option>
+                                <option value="hip-hop">Hip-Hop</option>
+                                <option value="pop">Pop</option>
+                                <option value="rock">Rock</option>
+                                <option value="electronic">Electronic</option>
+                                <option value="jazz">Jazz</option>
+                                <option value="reggae">Reggae</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Localisation</label>
+                        <div class="input-group">
+                            <i class="fas fa-map-marker-alt" style="color: #333;"></i>
+                            <input type="text" id="location" placeholder="Ville, Pays" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Biographie (optionnel)</label>
+                        <textarea id="bio" placeholder="Parlez-nous de votre parcours musical..." rows="4"></textarea>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="location">Localisation</label>
-                    <div class="input-group">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <input type="text" id="location" placeholder="Ville, Pays" required>
+                <!-- Fan-specific fields -->
+                <div id="fanFields" class="account-specific" style="display: none;">
+                    <div class="form-group">
+                        <label for="favoriteGenres">Genres musicaux préférés</label>
+                        <div class="input-group">
+                            <i class="fas fa-music" style="color: #333;"></i>
+                            <select id="favoriteGenres" multiple required>
+                                <option value="rap">Rap</option>
+                                <option value="rnb">R&B</option>
+                                <option value="hip-hop">Hip-Hop</option>
+                                <option value="pop">Pop</option>
+                                <option value="rock">Rock</option>
+                                <option value="electronic">Electronic</option>
+                                <option value="jazz">Jazz</option>
+                                <option value="reggae">Reggae</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="bio">Biographie (optionnel)</label>
-                    <textarea id="bio" placeholder="Parlez-nous de votre parcours musical..." rows="4"></textarea>
+                    <div class="form-group">
+                        <label for="locationFan">Localisation</label>
+                        <div class="input-group">
+                            <i class="fas fa-map-marker-alt" style="color: #333;"></i>
+                            <input type="text" id="locationFan" placeholder="Ville, Pays" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="interests">Intérêts (optionnel)</label>
+                        <textarea id="interests" placeholder="Quels types d'artistes ou de musique vous passionnent ?" rows="4"></textarea>
+                    </div>
                 </div>
 
                 <div class="form-buttons">
-                    <button type="button" class="btn btn-outline" onclick="previousStep(1)">
+                    <button type="button" class="btn btn-outline" id="prevStep2">
                         <i class="fas fa-arrow-left"></i>
                         Précédent
                     </button>
@@ -204,13 +226,20 @@
                         </div>
                     </div>
                     <div class="summary-item">
+                        <i class="fas fa-user-tag"></i>
+                        <div>
+                            <strong>Type de compte</strong>
+                            <span id="summaryAccountType"></span>
+                        </div>
+                    </div>
+                    <div class="summary-item artist-only">
                         <i class="fas fa-microphone"></i>
                         <div>
                             <strong>Nom d'artiste</strong>
                             <span id="summaryArtistName"></span>
                         </div>
                     </div>
-                    <div class="summary-item">
+                    <div class="summary-item artist-only">
                         <i class="fas fa-music"></i>
                         <div>
                             <strong>Genre</strong>
@@ -224,13 +253,20 @@
                             <span id="summaryLocation"></span>
                         </div>
                     </div>
+                    <div class="summary-item fan-only" style="display: none;">
+                        <i class="fas fa-heart"></i>
+                        <div>
+                            <strong>Genres préférés</strong>
+                            <span id="summaryFavoriteGenres"></span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="checkbox-label">
                         <input type="checkbox" id="terms" required>
                         <span class="checkmark"></span>
-                        J'accepte les <a href="#" >conditions d'utilisation</a> et la <a href="#" >politique de confidentialité</a>
+                        J'accepte les <a href="#">conditions d'utilisation</a> et la <a href="#">politique de confidentialité</a>
                     </label>
                 </div>
 
@@ -243,11 +279,11 @@
                 </div>
 
                 <div class="form-buttons">
-                    <button type="button" class="btn btn-outline" onclick="previousStep(2)">
+                    <button type="button" class="btn btn-outline" id="prevStep3">
                         <i class="fas fa-arrow-left"></i>
                         Précédent
                     </button>
-                    <button type="button" class="btn btn-primary" onclick="handleSignUp()" id="signUpBtn">
+                    <button type="button" class="btn btn-primary" id="signUpBtn">
                         <i class="fas fa-user-plus"></i>
                         Créer mon compte
                     </button>
@@ -260,30 +296,23 @@
                     <span>ou</span>
                 </div>
                 <div class="social-buttons">
-                    <button class="btn btn-social google" onclick="signUpWithGoogle()">
+                    <button class="btn btn-social google">
                         <i class="fab fa-google"></i>
-                        Google
+                        Se connecter avec Google
                     </button>
-                    <button class="btn btn-social facebook" onclick="signUpWithFacebook()">
-                        <i class="fab fa-facebook-f"></i>
-                        Facebook
-                    </button>
+
                 </div>
             </div>
 
             <!-- Login Link -->
-            <div class="auth-switch">
+            <div class="auth-switchs">
                 <p>Déjà un compte ? <a href="login.html">Se connecter</a></p>
             </div>
         </div>
-
-        <!-- Back to Home -->
-        <div class="auth-back">
-            <a href="../index.html">
-                <i class="fas fa-arrow-left"></i>
-                Retour à l'accueil
-            </a>
-        </div>
+                <!-- Retour à l'accueil -->
+            <div class="auth-back">
+                <p><a href="../index.html">Retour à l'accueil</a></p>
+            </div>
     </div>
 
     <!-- Success Modal -->
@@ -294,15 +323,24 @@
                 <h3>Compte créé avec succès !</h3>
             </div>
             <div class="modal-body">
-                <p>Bienvenue dans la communauté Young Talent ! Un email de confirmation a été envoyé à votre adresse.</p>
+                <p>Un lien de vérification a été envoyé à votre adresse email. Veuillez vérifier votre boîte de réception.</p>
                 <div class="welcome-actions">
-                    <a href="dashboard.html" class="btn btn-primary">Accéder au tableau de bord</a>
-                    <a href="../html/discover.html" class="btn btn-outline">Découvrir la musique</a>
+                    <a href="../index.html" class="btn btn-primary">Retour à l'accueil</a>
+                    <a href="discover.html" class="btn btn-outline">Découvrir la musique</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="../js/signup.js"></script>
+    <!-- CDN Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"></script>
+
+    <!-- Vos scripts -->
+    <script type="module" src="../js/notifications.js"></script>
+    <script type="module" src="../js/firebase.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+    <script type="module" src="../js/signup.js"></script>
 </body>
 </html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modération - Young Talent</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="../../css/style.css" rel="stylesheet">
+    <link href="../../css/style-pages/dashboard.css" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h2>Young Talent</h2>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="dashboard">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Tableau de bord</span>
+            </a>
+            <a href="#" class="nav-item" data-section="users">
+                <i class="fas fa-users"></i>
+                <span>Utilisateurs</span>
+            </a>
+            <a href="#" class="nav-item" data-section="content">
+                <i class="fas fa-music"></i>
+                <span>Contenu</span>
+            </a>
+            <a href="#" class="nav-item" data-section="reports">
+                <i class="fas fa-flag"></i>
+                <span>Signalements</span>
+            </a>
+            <a href="#" class="nav-item" data-section="settings">
+                <i class="fas fa-cog"></i>
+                <span>Paramètres</span>
+            </a>
+
+            <a href="../../index.html" class="nav-itemHome" >
+                <i class="fas fa-home"></i>
+                <span>Accueil</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="btn btn-outline btn-sm">
+                <i class="fas fa-sign-out-alt"></i>
+                Déconnexion
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h3 id="dashboardTitle">Tableau de bord</h3>
+            </div>
+            <div class="header-right">
+                <div class="notifications">
+                    <button class="btn-icon" id="notificationsBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">5</span>
+                    </button>
+                </div>
+                <div class="profile-dropdown">
+                    <button class="profile-btn">
+                        <img src="https://via.placeholder.com/40" alt="Profile" id="profileImage">
+                        <span>Modérateur</span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#" data-section="settings"><i class="fas fa-cog"></i> Paramètres</a>
+                        <a href="#" id="logoutBtnDropdown"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section class="dashboard-section active" id="dashboardSection">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Utilisateurs</h4>
+                        <span id="totalUsers">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Titres</h4>
+                        <span id="totalTracks">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-podcast"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Podcasts</h4>
+                        <span id="totalPodcasts">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Signalements</h4>
+                        <span id="totalReports">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h4>Activité récente</h4>
+                <div class="activity-list" id="activityList">
+                    <!-- Rempli dynamiquement -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Users Section -->
+        <section class="dashboard-section" id="usersSection">
+            <div class="section-header">
+                <h4>Gestion des Utilisateurs</h4>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="userSearch" placeholder="Rechercher un utilisateur...">
+                </div>
+            </div>
+            
+            <div class="users-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Rôle</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <!-- Rempli dynamiquement -->
+                    </tbody>
+                </table>
+                
+                <div class="pagination">
+                    <button class="btn btn-outline btn-sm" id="prevPage">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span id="currentPage">1</span>
+                    <button class="btn btn-outline btn-sm" id="nextPage">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="dashboard-section" id="contentSection">
+            <div class="section-header">
+                <h4>Gestion du Contenu</h4>
+                <div class="content-tabs">
+                    <button class="tab-btn active" data-tab="tracks">Musiques</button>
+                    <button class="tab-btn" data-tab="podcasts">Podcasts</button>
+                    <button class="tab-btn" data-tab="artists">Artistes</button>
+                </div>
+            </div>
+            
+            <div class="content-manager">
+                <div class="content-tab active" id="tracksTab">
+                    <div class="search-filter">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="trackSearch" placeholder="Rechercher une musique...">
+                        </div>
+                        <select id="trackFilter">
+                            <option value="all">Toutes</option>
+                            <option value="pending">En attente</option>
+                            <option value="approved">Approuvées</option>
+                            <option value="rejected">Rejetées</option>
+                        </select>
+                    </div>
+                    
+                    <div class="content-list" id="tracksList">
+                        <!-- Rempli dynamiquement -->
+                    </div>
+                </div>
+                
+                <div class="content-tab" id="podcastsTab">
+                    <div class="search-filter">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="podcastSearch" placeholder="Rechercher un podcast...">
+                        </div>
+                        <select id="podcastFilter">
+                            <option value="all">Tous</option>
+                            <option value="pending">En attente</option>
+                            <option value="approved">Approuvés</option>
+                            <option value="rejected">Rejetés</option>
+                        </select>
+                    </div>
+                    
+                    <div class="content-list" id="podcastsList">
+                        <!-- Rempli dynamiquement -->
+                    </div>
+                </div>
+                
+                <div class="content-tab" id="artistsTab">
+                    <div class="search-filter">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="artistSearch" placeholder="Rechercher un artiste...">
+                        </div>
+                        <select id="artistFilter">
+                            <option value="all">Tous</option>
+                            <option value="pending">En attente</option>
+                            <option value="verified">Vérifiés</option>
+                            <option value="unverified">Non vérifiés</option>
+                        </select>
+                    </div>
+                    
+                    <div class="content-list" id="artistsList">
+                        <!-- Rempli dynamiquement -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reports Section -->
+        <section class="dashboard-section" id="reportsSection">
+            <div class="section-header">
+                <h4>Signalements</h4>
+                <div class="report-tabs">
+                    <button class="tab-btn active" data-tab="all">Tous</button>
+                    <button class="tab-btn" data-tab="tracks">Musiques</button>
+                    <button class="tab-btn" data-tab="podcasts">Podcasts</button>
+                    <button class="tab-btn" data-tab="users">Utilisateurs</button>
+                </div>
+            </div>
+            
+            <div class="reports-list" id="reportsList">
+                <!-- Rempli dynamiquement -->
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+         
+        <section class="dashboard-section" id="settingsSection">
+            
+            <h4>Paramètres de Modération</h4>
+            
+            <div class="settings-form">
+                <div class="form-group">
+                    <label for="moderationLevel">Niveau de Modération</label>
+                    <select id="moderationLevel">
+                        <option value="strict">Strict</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="relaxed">Relaxé</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="autoApprove">Approbation Automatique</label>
+                    <div class="switch">
+                        <input type="checkbox" id="autoApprove">
+                        <span class="slider"></span>
+                    </div>
+                    <small>Activez pour approuver automatiquement les contenus des artistes vérifiés</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reportThreshold">Seuil de Signalement</label>
+                    <input type="number" id="reportThreshold" value="5" min="1">
+                    <small>Nombre de signalements avant action automatique</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Modèles de Réponse</label>
+                    <div class="response-templates">
+                        <div class="template-item">
+                            <h5>Contenu inapproprié</h5>
+                            <textarea class="template-content">Votre contenu a été supprimé car il ne respecte pas nos conditions d'utilisation.</textarea>
+                        </div>
+                        <div class="template-item">
+                            <h5>Violation de copyright</h5>
+                            <textarea class="template-content">Votre contenu a été supprimé en raison d'une violation de droits d'auteur.</textarea>
+                        </div>
+                        <button class="btn btn-outline btn-sm" id="addTemplateBtn">
+                            <i class="fas fa-plus"></i>
+                            Ajouter un modèle
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button class="btn btn-outline" id="resetSettings">
+                        Réinitialiser
+                    </button>
+                    <button class="btn btn-primary" id="saveSettings">
+                        Enregistrer
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CDN Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Vos scripts -->
+    <script type="module" src="../../js/dashboard-moderateur.js"></script>
+</body>
+</html>

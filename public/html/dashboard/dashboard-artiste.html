@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Artiste - Young Talent</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <link href="../../css/style-pages/dashboard.css" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h2>Young Talent</h2>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="overview">
+                <i class="fas fa-home"></i>
+                <span>Vue d'ensemble</span>
+            </a>
+            <a href="#" class="nav-item" data-section="music">
+                <i class="fas fa-music"></i>
+                <span>Ma Musique</span>
+            </a>
+            <a href="#" class="nav-item" data-section="podcasts">
+                <i class="fas fa-podcast"></i>
+                <span>Mes Podcasts</span>
+            </a>
+            <a href="#" class="nav-item" data-section="analytics">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytiques</span>
+            </a>
+            <a href="#" class="nav-item" data-section="profile">
+                <i class="fas fa-user"></i>
+                <span>Mon Profil</span>
+            </a>
+
+                        <a href="../../index.html" class="nav-itemHome" >
+                <i class="fas fa-home"></i>
+                <span>Accueil</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="btn btn-outline btn-sm">
+                <i class="fas fa-sign-out-alt"></i>
+                Déconnexion
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h3 id="dashboardTitle">Vue d'ensemble</h3>
+            </div>
+            <div class="header-right">
+                <div class="notifications">
+                    <button class="btn-icon" id="notificationsBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                </div>
+                <div class="profile-dropdown">
+                    <button class="profile-btn">
+                        <img src="https://via.placeholder.com/40" alt="Profile" id="profileImage">
+                        <span id="artistNameDisplay">Mon Profil</span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#" data-section="profile"><i class="fas fa-user"></i> Mon Profil</a>
+                        <a href="#" id="logoutBtnDropdown"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Overview Section -->
+        <section class="dashboard-section active" id="overviewSection">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Écoutes totales</h4>
+                        <span id="totalPlays">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Followers</h4>
+                        <span id="totalFollowers">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Likes</h4>
+                        <span id="totalLikes">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Titres</h4>
+                        <span id="totalTracks">0</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-podcast"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Podcast</h4>
+                        <span id="totalPodcast">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-uploads">
+                <div class="section-header">
+                    <h4>Dernières sorties</h4>
+                    <button class="btn btn-primary btn-sm" id="uploadNewTrack">
+                        <i class="fas fa-plus"></i>
+                        Nouveau titre
+                    </button>
+                </div>
+                <div class="tracks-list" id="recentTracksList">
+                    <!-- Rempli dynamiquement -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Section -->
+        <section class="dashboard-section" id="musicSection">
+            <div class="section-header">
+                <h4>Ma Musique</h4>
+                <button class="btn btn-primary" id="uploadMusicBtn">
+                    <i class="fas fa-upload"></i>
+                    Uploader un titre
+                </button>
+            </div>
+            
+            <div class="music-manager">
+                <div class="upload-area" id="uploadArea" style="display: none;">
+                    <div class="upload-form">
+                        <div class="form-group">
+                            <label for="trackTitle">Titre du morceau*</label>
+                            <input type="text" id="trackTitle" placeholder="Nom du titre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trackGenre">Genre*</label>
+                            <select id="trackGenre" required>
+                                <option value="rap">Rap</option>
+                                <option value="rnb">R&B</option>
+                                <option value="hip-hop">Hip-Hop</option>
+                                <option value="pop">Pop</option>
+                                <option value="rock">Rock</option>
+                                <option value="electronic">Electronic</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="trackCover">Cover Art (optionnel)</label>
+                            <input type="file" id="trackCover" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="trackFile">Fichier audio*</label>
+                            <input type="file" id="trackFile" accept="audio/*" required>
+                            <div class="upload-progress" id="uploadProgress" style="display: none;">
+                                <div class="progress-bar" id="progressBar"></div>
+                                <span id="progressText">0%</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="cancelUpload">Annuler</button>
+                            <button type="button" class="btn btn-primary" id="submitTrack">Publier</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="music-list" id="musicList">
+                    <!-- Rempli dynamiquement -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Podcasts Section -->
+        <section class="dashboard-section" id="podcastsSection">
+            <div class="section-header">
+                <h4>Mes Podcasts</h4>
+                <button class="btn btn-primary" id="createPodcastBtn">
+                    <i class="fas fa-plus"></i>
+                    Créer un podcast
+                </button>
+            </div>
+            
+            <div class="podcast-manager">
+                <div class="upload-area" id="podcastUploadArea" style="display: none;">
+                    <div class="upload-form">
+                        <div class="form-group">
+                            <label for="podcastTitle">Titre du podcast*</label>
+                            <input type="text" id="podcastTitle" placeholder="Nom du podcast" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="podcastDescription">Description*</label>
+                            <textarea id="podcastDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="podcastCover">Image (optionnel)</label>
+                            <input type="file" id="podcastCover" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="podcastFile">Fichier audio*</label>
+                            <input type="file" id="podcastFile" accept="audio/*" required>
+                            <div class="upload-progress" id="podcastUploadProgress" style="display: none;">
+                                <div class="progress-bar" id="podcastProgressBar"></div>
+                                <span id="podcastProgressText">0%</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="cancelPodcastUpload">Annuler</button>
+                            <button type="button" class="btn btn-primary" id="submitPodcast">Publier</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="podcast-list" id="podcastList">
+                    <!-- Rempli dynamiquement -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section class="dashboard-section" id="analyticsSection">
+            <h4>Analytiques</h4>
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h5>Audience</h5>
+                    <div class="chart-container">
+                        <canvas id="audienceChart"></canvas>
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <h5>Top Titres</h5>
+                    <div class="top-tracks" id="topTracksList">
+                        <!-- Rempli dynamiquement -->
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <h5>Démographie</h5>
+                    <div class="chart-container">
+                        <canvas id="demographicChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section class="dashboard-section" id="profileSection">
+            <h4>Mon Profil</h4>
+            <div class="profile-form">
+                <div class="profile-header">
+                    <div class="avatar-upload">
+                        <img src="https://via.placeholder.com/150" alt="Profile" id="profileAvatar">
+                        <button class="btn btn-outline btn-sm" id="changeAvatarBtn">
+                            <i class="fas fa-camera"></i>
+                            Changer
+                        </button>
+                        <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="profileDisplayName">Nom d'artiste</h3>
+                        <span class="badge" id="profileBadge">Artiste</span>
+                    </div>
+                </div>
+                
+                <form id="artistProfileForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="artistName">Nom d'artiste*</label>
+                            <input type="text" id="artistName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="artistGenre">Genre principal*</label>
+                            <select id="artistGenre" required>
+                                <option value="rap">Rap</option>
+                                <option value="rnb">R&B</option>
+                                <option value="hip-hop">Hip-Hop</option>
+                                <option value="pop">Pop</option>
+                                <option value="rock">Rock</option>
+                                <option value="electronic">Electronic</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artistLocation">Localisation</label>
+                        <input type="text" id="artistLocation">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artistBio">Biographie</label>
+                        <textarea id="artistBio" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Liens sociaux</label>
+                        <div class="social-links" id="socialLinks">
+                            <!-- Rempli dynamiquement -->
+                        </div>
+                        <button type="button" class="btn btn-outline btn-sm" id="addSocialLink">
+                            <i class="fas fa-plus"></i>
+                            Ajouter un lien
+                        </button>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelProfileChanges">
+                            Annuler
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Enregistrer les modifications
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- CDN Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Vos scripts -->
+    <script type="module" src="../../js/dashboard-artiste.js"></script>
+</body>
+</html>

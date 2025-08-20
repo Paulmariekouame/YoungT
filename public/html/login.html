@@ -6,33 +6,25 @@
     <title>Connexion - Young Talent</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
+
 </head>
 <body class="auth-page">
-    <div class="auth-container">
-        <!-- Logo -->
-        <div class="auth-logo">
-            <a href="../index.html" class="logo-link">
-                <div class="logo-icon">
-                    <i class="fas fa-music"></i>
-                </div>
-                <h1>Young Talent</h1>
-            </a>
-            <p>Connectez-vous à votre compte</p>
-        </div>
+   
 
+    <div class="auth-container">
         <!-- Login Card -->
         <div class="auth-card">
             <div class="auth-header">
                 <h2>Connexion</h2>
-                <p>Accédez à votre espace artiste</p>
+                <p>Accédez à votre espace</p>
             </div>
 
             <!-- Login Form -->
-            <form class="auth-form" onsubmit="handleLogin(event)">
+            <form class="auth-form" id="loginForm">
                 <div class="form-group">
                     <label for="loginEmail">Email</label>
                     <div class="input-group">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope" style="color: #333;"></i>
                         <input type="email" id="loginEmail" placeholder="votre@email.com" required>
                     </div>
                 </div>
@@ -40,10 +32,10 @@
                 <div class="form-group">
                     <label for="loginPassword">Mot de passe</label>
                     <div class="input-group">
-                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-lock" style="color: #333;"></i>
                         <input type="password" id="loginPassword" placeholder="••••••••" required>
-                        <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
-                            <i class="fas fa-eye" id="loginPasswordToggle"></i>
+                        <button type="button" class="password-toggle" data-target="loginPassword">
+                            <i class="fas fa-eye" id="loginPasswordToggle" style="color: #333;"></i>
                         </button>
                     </div>
                 </div>
@@ -69,31 +61,25 @@
                     <span>ou</span>
                 </div>
                 <div class="social-buttons">
-                    <button class="btn btn-social google" onclick="loginWithGoogle()">
+                    <button class="btn btn-social google">
                         <i class="fab fa-google"></i>
-                        Google
+                        Se connecter avec Google
                     </button>
-                    <button class="btn btn-social facebook" onclick="loginWithFacebook()">
-                        <i class="fab fa-facebook-f"></i>
-                        Facebook
-                    </button>
+
                 </div>
             </div>
 
             <!-- Sign Up Link -->
-            <div class="auth-switch">
+            <div class="auth-switchs">
                 <p>Pas encore de compte ? <a href="sign-up.html">Créer un compte</a></p>
             </div>
         </div>
-
-        <!-- Back to Home -->
-        <div class="auth-back">
-            <a href="../index.html">
-                <i class="fas fa-arrow-left"></i>
-                Retour à l'accueil
-            </a>
-        </div>
+        <!-- Retour à l'accueil -->
+            <div class="auth-back">
+                <p><a href="../index.html">Retour à l'accueil</a></p>
+            </div>
     </div>
+
 
     <!-- Success Modal -->
     <div id="successModal" class="modal">
@@ -108,6 +94,15 @@
         </div>
     </div>
 
-    <script src="../js/login.js"></script>
+<!-- CDN Firebase -->
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"></script>
+
+<!-- Vos scripts -->
+<script type="module" src="../js/notifications.js"></script>
+<script type="module" src="../js/firebase.js"></script>
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="../js/login.js"></script>
 </body>
 </html>

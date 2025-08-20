@@ -8,7 +8,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
-       <!-- Header -->
+ <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="nav-wrapper">
@@ -20,15 +20,28 @@
                 </div>
                 
                 <nav class="nav-menu">
-                    <a href="../index.html" class="nav-link ">Accueil</a>
+                    <a href="../index.html" class="nav-link">Accueil</a>
                     <a href="discover.html" class="nav-link">Découvrir</a>
                     <a href="podcasts.html" class="nav-link">Podcasts</a>
                     <a href="artists.html" class="nav-link active">Artistes</a>
                 </nav>
                 
-                <div class="nav-buttons">
+                <div class="nav-buttons" id="navButtons">
                     <a href="login.html" class="btn btn-outline">Connexion</a>
                     <a href="sign-up.html" class="btn btn-primary">Rejoindre</a>
+                </div>
+                
+                <div class="profile-dropdown" id="profileDropdown" style="display: none;">
+                    <button class="profile-btn">
+                        <i class="fas fa-user"></i>
+                        <span id="userEmail"></span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#" id="dashboardLink" style="display: none;">Tableau de bord</a>
+                        <a href="settings.html">Paramètres</a>
+                        <a href="#" id="logoutBtn">Déconnexion</a>
+                    </div>
                 </div>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -37,18 +50,30 @@
             </div>
         </div>
         
-        <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
             <nav class="nav-menu">
-                <a href="../index.html" class="nav-link active">Accueil</a>
+                <a href="../index.html" class="nav-link ">Accueil</a>
                 <a href="discover.html" class="nav-link">Découvrir</a>
                 <a href="podcasts.html" class="nav-link">Podcasts</a>
-                <a href="artists.html" class="nav-link">Artistes</a>
+                <a href="artists.html" class="nav-link active">Artistes</a>
             </nav>
             
-            <div class="nav-buttons">
+            <div class="nav-buttons" id="mobileNavButtons">
                 <a href="login.html" class="btn btn-outline">Connexion</a>
                 <a href="sign-up.html" class="btn btn-primary">Rejoindre</a>
+            </div>
+            
+            <div class="profile-dropdown" id="mobileProfileDropdown" style="display: none;">
+                <button class="profile-btn">
+                    <i class="fas fa-user"></i>
+                    <span id="mobileUserEmail"></span>
+                    <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" id="mobileDashboardLink" style="display: none;">Tableau de bord</a>
+                    <a href="html/settings.html">Paramètres</a>
+                    <a href="#" id="mobileLogoutBtn">Déconnexion</a>
+                </div>
             </div>
         </div>
         
@@ -67,91 +92,13 @@
                 </p>
             </section>
 
-            <!-- Artists Grid -->
-            <section class="artists-section">
-                <div class="artists-grid">
-                    <div class="artist-card-detailed">
-                        <div class="artist-image">
-                            <img src="https://via.placeholder.com/200x200?text=MC+Flow" alt="MC Flow">
-                            <div class="verified-badge">
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="artist-info">
-                            <h4>MC Flow</h4>
-                            <span class="genre-badge">Rap</span>
-                            <p class="artist-bio">Rappeur parisien passionné par les mots et les rythmes urbains.</p>
-                            <div class="artist-stats">
-                                <div class="stat">
-                                    <span class="stat-value">12.5K</span>
-                                    <span class="stat-label">Followers</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-value">24</span>
-                                    <span class="stat-label">Titres</span>
-                                </div>
-                            </div>
-                            <a href="artist.html?id=1" class="btn btn-secondary">
-                                <i class="fas fa-users"></i>
-                                Voir Profil
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="artist-card-detailed">
-                        <div class="artist-image">
-                            <img src="https://via.placeholder.com/200x200?text=Luna+Voice" alt="Luna Voice">
-                        </div>
-                        <div class="artist-info">
-                            <h4>Luna Voice</h4>
-                            <span class="genre-badge">R&B</span>
-                            <p class="artist-bio">Chanteuse R&B avec une voix unique et des mélodies envoûtantes.</p>
-                            <div class="artist-stats">
-                                <div class="stat">
-                                    <span class="stat-value">8.3K</span>
-                                    <span class="stat-label">Followers</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-value">18</span>
-                                    <span class="stat-label">Titres</span>
-                                </div>
-                            </div>
-                            <a href="artist.html?id=2" class="btn btn-secondary">
-                                <i class="fas fa-users"></i>
-                                Voir Profil
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="artist-card-detailed">
-                        <div class="artist-image">
-                            <img src="https://via.placeholder.com/200x200?text=Beat+Master" alt="Beat Master">
-                            <div class="verified-badge">
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="artist-info">
-                            <h4>Beat Master</h4>
-                            <span class="genre-badge">Hip-Hop</span>
-                            <p class="artist-bio">Producteur et rappeur, créateur de beats qui font bouger les foules.</p>
-                            <div class="artist-stats">
-                                <div class="stat">
-                                    <span class="stat-value">15.2K</span>
-                                    <span class="stat-label">Followers</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-value">32</span>
-                                    <span class="stat-label">Titres</span>
-                                </div>
-                            </div>
-                            <a href="artist.html?id=3" class="btn btn-secondary">
-                                <i class="fas fa-users"></i>
-                                Voir Profil
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<section class="artists-section">
+  <div class="artists-grid" id="artistsGrid">
+    <div class="loading">
+      <p><i class="fas fa-spinner fa-spin"></i> Chargement des artistes...</p>
+    </div>
+  </div>
+</section>
 
             <!-- CTA Section -->
             <section class="cta-section">
@@ -205,8 +152,18 @@
             </div>
         </div>
     </footer>
+<!-- CDN Firebase -->
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js"></script> <!-- Nouveau pour les fichiers -->
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+<!-- Vos scripts -->
+<script type="module" src="../js/notifications.js"></script>
+<script type="module" src="../js/firebase.js"></script>
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="../js/artist.js"></script>
+<script type="module" src="../js/script.js"></script>
 
-    <script src="../js/script.js"></script>
-    <script src="../js/artist.js"></script>
 </body>
 </html>

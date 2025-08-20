@@ -6,9 +6,10 @@
     <title>Young Talent - Plateforme Musicale pour Jeunes Artistes</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-pages/home.css">
 </head>
 <body>
-    <!-- Header -->
+     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="nav-wrapper">
@@ -26,9 +27,22 @@
                     <a href="html/artists.html" class="nav-link">Artistes</a>
                 </nav>
                 
-                <div class="nav-buttons">
+                <div class="nav-buttons" id="navButtons">
                     <a href="html/login.html" class="btn btn-outline">Connexion</a>
                     <a href="html/sign-up.html" class="btn btn-primary">Rejoindre</a>
+                </div>
+                
+                <div class="profile-dropdown" id="profileDropdown" style="display: none;">
+                    <button class="profile-btn">
+                        <i class="fas fa-user"></i>
+                        <span id="userEmail"></span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#" id="dashboardLink" style="display: none;">Tableau de bord</a>
+                        <a href="html/settings.html">Paramètres</a>
+                        <a href="#" id="logoutBtn">Déconnexion</a>
+                    </div>
                 </div>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -37,7 +51,6 @@
             </div>
         </div>
         
-        <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
             <nav class="nav-menu">
                 <a href="index.html" class="nav-link active">Accueil</a>
@@ -46,22 +59,35 @@
                 <a href="html/artists.html" class="nav-link">Artistes</a>
             </nav>
             
-            <div class="nav-buttons">
+            <div class="nav-buttons" id="mobileNavButtons">
                 <a href="html/login.html" class="btn btn-outline">Connexion</a>
                 <a href="html/sign-up.html" class="btn btn-primary">Rejoindre</a>
+            </div>
+            
+            <div class="profile-dropdown" id="mobileProfileDropdown" style="display: none;">
+                <button class="profile-btn">
+                    <i class="fas fa-user"></i>
+                    <span id="mobileUserEmail"></span>
+                    <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" id="mobileDashboardLink" style="display: none;">Tableau de bord</a>
+                    <a href="html/settings.html">Paramètres</a>
+                    <a href="#" id="mobileLogoutBtn">Déconnexion</a>
+                </div>
             </div>
         </div>
         
         <div class="overlay" id="overlay"></div>
     </header>
 
+    
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h2 class="hero-title">
-                    Votre <span style="background: var(--primary-gradient); background-clip: text;
- -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Talent</span> Mérite d'Être Entendu
+                    Votre <span style="background: var(--primary-gradient); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Talent</span> Mérite d'Être Entendu
                 </h2>
                 <p class="hero-description">
                     La plateforme qui propulse les jeunes artistes vers le succès. Partagez votre musique, créez des podcasts et connectez-vous avec vos fans.
@@ -80,6 +106,8 @@
         </div>
     </section>
 
+
+   
     <!-- Stats Section -->
     <section class="stats">
         <div class="container">
@@ -104,167 +132,32 @@
         </div>
     </section>
 
-    <!-- Featured Artists -->
-    <section class="featured-artists">
-        <div class="container">
-            <h3 class="section-title">Artistes en Vedette</h3>
-            <div class="artists-grid">
-                <div class="artist-card">
-                    <div class="artist-image">
-                        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="MC Flow">
-                        <div class="verified-badge">
-                            <i class="fas fa-check"></i>
-                        </div>
-                    </div>
-                    <div class="artist-info">
-                        <h4>MC Flow</h4>
-                        <span class="genre-badge">Rap</span>
-                        <div class="artist-stats">
-                            <div class="stat">
-                                <div class="stat-value">12.5K</div>
-                                <div class="stat-label">Followers</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">24</div>
-                                <div class="stat-label">Titres</div>
-                            </div>
-                        </div>
-                        <a href="artist.html?id=1" class="btn btn-outline" style="width: 100%;">
-                            <i class="fas fa-users"></i>
-                            Voir Profil
-                        </a>
-                    </div>
-                </div>
 
-                <div class="artist-card">
-                    <div class="artist-image">
-                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Luna Voice">
-                    </div>
-                    <div class="artist-info">
-                        <h4>Luna Voice</h4>
-                        <span class="genre-badge">R&B</span>
-                        <div class="artist-stats">
-                            <div class="stat">
-                                <div class="stat-value">8.3K</div>
-                                <div class="stat-label">Followers</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">18</div>
-                                <div class="stat-label">Titres</div>
-                            </div>
-                        </div>
-                        <a href="artist.html?id=2" class="btn btn-outline" style="width: 100%;">
-                            <i class="fas fa-users"></i>
-                            Voir Profil
-                        </a>
-                    </div>
-                </div>
+<section class="featured-artists">
+  <div class="container">
+    <h3 class="section-title">Artistes en Vedette</h3>
+    <div class="artists-grid" id="featuredArtists">
+      <div class="loading">
+        <p><i class="fas fa-spinner fa-spin"></i> Chargement des artistes...</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-                <div class="artist-card">
-                    <div class="artist-image">
-                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Beat Master">
-                        <div class="verified-badge">
-                            <i class="fas fa-check"></i>
-                        </div>
-                    </div>
-                    <div class="artist-info">
-                        <h4>Beat Master</h4>
-                        <span class="genre-badge">Hip-Hop</span>
-                        <div class="artist-stats">
-                            <div class="stat">
-                                <div class="stat-value">15.2K</div>
-                                <div class="stat-label">Followers</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">32</div>
-                                <div class="stat-label">Titres</div>
-                            </div>
-                        </div>
-                        <a href="artist.html?id=3" class="btn btn-outline" style="width: 100%;">
-                            <i class="fas fa-users"></i>
-                            Voir Profil
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Dans trending-tracks -->
+<section class="trending-tracks">
+  <div class="container">
+    <h3 class="section-title">Tendances du Moment</h3>
+    <div class="tracks-list" id="trendingTracks">
+      <div class="loading">
+        <p><i class="fas fa-spinner fa-spin"></i> Chargement des tendances...</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Trending Tracks -->
-    <section class="trending-tracks">
-        <div class="container">
-            <h3 class="section-title">Tendances du Moment</h3>
-            <div class="tracks-list">
-                <div class="track-item">
-                    <div class="track-info">
-                        <span class="track-number">1</span>
-                        <img src="https://via.placeholder.com/60x60?text=Track" alt="Rising Star" class="track-image">
-                        <div class="track-details">
-                            <h4>Rising Star</h4>
-                            <p>MC Flow</p>
-                        </div>
-                    </div>
-                    <div class="track-actions">
-                        <button class="btn-icon" onclick="togglePlay(1)">
-                            <i class="fas fa-play" id="play-icon-1"></i>
-                        </button>
-                        <button class="btn-icon">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                        <button class="btn-icon">
-                            <i class="fas fa-share"></i>
-                        </button>
-                    </div>
-                </div>
 
-                <div class="track-item">
-                    <div class="track-info">
-                        <span class="track-number">2</span>
-                        <img src="https://via.placeholder.com/60x60?text=Track" alt="Midnight Dreams" class="track-image">
-                        <div class="track-details">
-                            <h4>Midnight Dreams</h4>
-                            <p>Luna Voice</p>
-                        </div>
-                    </div>
-                    <div class="track-actions">
-                        <button class="btn-icon" onclick="togglePlay(2)">
-                            <i class="fas fa-play" id="play-icon-2"></i>
-                        </button>
-                        <button class="btn-icon">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                        <button class="btn-icon">
-                            <i class="fas fa-share"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="track-item">
-                    <div class="track-info">
-                        <span class="track-number">3</span>
-                        <img src="https://via.placeholder.com/60x60?text=Track" alt="Street Anthem" class="track-image">
-                        <div class="track-details">
-                            <h4>Street Anthem</h4>
-                            <p>Beat Master</p>
-                        </div>
-                    </div>
-                    <div class="track-actions">
-                        <button class="btn-icon" onclick="togglePlay(3)">
-                            <i class="fas fa-play" id="play-icon-3"></i>
-                        </button>
-                        <button class="btn-icon">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                        <button class="btn-icon">
-                            <i class="fas fa-share"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
+ <!-- Features Section -->
     <section class="features">
         <div class="container">
             <h3 class="section-title">Pourquoi Choisir Young Talent ?</h3>
@@ -296,7 +189,7 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
+     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
             <div class="cta-content">
@@ -351,6 +244,18 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- CDN Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js"></script>
+    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+    <!-- Vos scripts -->
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/notifications.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/content.js"></script>
+    <script type="module" src="js/script.js"></script>
 </body>
 </html>

@@ -463,8 +463,9 @@ textarea:focus {
     text-align: center;
 }
 
+
 .auth-back a {
-    color: var(--text-muted);
+    color: #333;
     text-decoration: none;
     font-size: 0.9rem;
     display: inline-flex;
@@ -572,3 +573,5 @@ textarea:focus {
         flex-direction: column;
     }
 }
+
+

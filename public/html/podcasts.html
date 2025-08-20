@@ -8,7 +8,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
+ <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="nav-wrapper">
@@ -26,9 +26,22 @@
                     <a href="artists.html" class="nav-link">Artistes</a>
                 </nav>
                 
-                <div class="nav-buttons">
+                <div class="nav-buttons" id="navButtons">
                     <a href="login.html" class="btn btn-outline">Connexion</a>
                     <a href="sign-up.html" class="btn btn-primary">Rejoindre</a>
+                </div>
+                
+                <div class="profile-dropdown" id="profileDropdown" style="display: none;">
+                    <button class="profile-btn">
+                        <i class="fas fa-user"></i>
+                        <span id="userEmail"></span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#" id="dashboardLink" style="display: none;">Tableau de bord</a>
+                        <a href="settings.html">Paramètres</a>
+                        <a href="#" id="logoutBtn">Déconnexion</a>
+                    </div>
                 </div>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -37,18 +50,30 @@
             </div>
         </div>
         
-        <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
             <nav class="nav-menu">
-                <a href="../index.html" class="nav-link active">Accueil</a>
+                <a href="../index.html" class="nav-link ">Accueil</a>
                 <a href="discover.html" class="nav-link">Découvrir</a>
-                <a href="podcasts.html" class="nav-link">Podcasts</a>
+                <a href="podcasts.html" class="nav-link active">Podcasts</a>
                 <a href="artists.html" class="nav-link">Artistes</a>
             </nav>
             
-            <div class="nav-buttons">
+            <div class="nav-buttons" id="mobileNavButtons">
                 <a href="login.html" class="btn btn-outline">Connexion</a>
                 <a href="sign-up.html" class="btn btn-primary">Rejoindre</a>
+            </div>
+            
+            <div class="profile-dropdown" id="mobileProfileDropdown" style="display: none;">
+                <button class="profile-btn">
+                    <i class="fas fa-user"></i>
+                    <span id="mobileUserEmail"></span>
+                    <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" id="mobileDashboardLink" style="display: none;">Tableau de bord</a>
+                    <a href="html/settings.html">Paramètres</a>
+                    <a href="#" id="mobileLogoutBtn">Déconnexion</a>
+                </div>
             </div>
         </div>
         
@@ -67,80 +92,13 @@
                 </p>
             </section>
 
-            <!-- Podcasts List -->
-            <section class="podcasts-section">
-                <div class="podcasts-list">
-                    <div class="podcast-item">
-                        <div class="podcast-image">
-                            <img src="https://via.placeholder.com/150x150?text=Podcast" alt="Mon Parcours Musical">
-                        </div>
-                        <div class="podcast-content">
-                            <div class="podcast-header">
-                                <h3>Mon Parcours Musical</h3>
-                                <a href="artist.html?id=1" class="host-link">par MC Flow</a>
-                            </div>
-                            <p class="podcast-description">
-                                Je raconte mon histoire, mes débuts dans le rap et mes inspirations.
-                            </p>
-                            <div class="podcast-meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>45:32</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-users"></i>
-                                    <span>8.2K écoutes</span>
-                                </div>
-                            </div>
-                            <div class="podcast-actions">
-                                <button class="btn btn-primary" onclick="togglePlay('podcast-1')">
-                                    <i class="fas fa-play" id="play-icon-podcast-1"></i>
-                                    Écouter
-                                </button>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-share"></i>
-                                    Partager
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="podcast-item">
-                        <div class="podcast-image">
-                            <img src="https://via.placeholder.com/150x150?text=Podcast" alt="L'Art de la Mélodie">
-                        </div>
-                        <div class="podcast-content">
-                            <div class="podcast-header">
-                                <h3>L'Art de la Mélodie</h3>
-                                <a href="artist.html?id=2" class="host-link">par Luna Voice</a>
-                            </div>
-                            <p class="podcast-description">
-                                Comment créer des mélodies qui touchent l'âme.
-                            </p>
-                            <div class="podcast-meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>38:45</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-users"></i>
-                                    <span>5.4K écoutes</span>
-                                </div>
-                            </div>
-                            <div class="podcast-actions">
-                                <button class="btn btn-primary" onclick="togglePlay('podcast-2')">
-                                    <i class="fas fa-play" id="play-icon-podcast-2"></i>
-                                    Écouter
-                                </button>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-share"></i>
-                                    Partager
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<section class="podcasts-section">
+  <div class="podcasts-list" id="podcastsList">
+    <div class="loading">
+      <p><i class="fas fa-spinner fa-spin"></i> Chargement des podcasts...</p>
+    </div>
+  </div>
+</section>
 
             <!-- CTA Section -->
             <section class="cta-section">
@@ -198,6 +156,18 @@
         </div>
     </footer>
 
-    <script src="../js/script.js"></script>
+<!-- CDN Firebase -->
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js"></script> <!-- Nouveau pour les fichiers -->
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+<!-- Vos scripts -->
+<script type="module" src="../js/notifications.js"></script>
+<script type="module" src="../js/firebase.js"></script>
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="../js/content.js"></script>
+<script type="module" src="../js/script.js"></script>
 </body>
 </html>

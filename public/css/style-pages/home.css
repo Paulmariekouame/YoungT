@@ -323,6 +323,7 @@
         /* CTA Section */
         .cta {
             padding: 6rem 0;
+            margin-bottom: 5em;
             background: var(--bg-gradient);
             color: var(--text-primary);
             text-align: center;
