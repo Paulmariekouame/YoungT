@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { 
   auth, 
   db, 
@@ -100,16 +101,28 @@ function redirectToLogin() {
 }
 
 function setupNavigation() {
-  const navItems = document.querySelectorAll('.nav-item');
+  const navItems = document.querySelectorAll('.nav-item, .nav-itemHome');
+  const sidebar = document.querySelector('.dashboard-sidebar');
+  const overlay = document.getElementById('overlay');
+
   if (!navItems.length) {
     console.error("Aucun élément de navigation trouvé");
     return;
   }
+
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
       toggleActiveNavItem(item);
-      showSection(item.dataset.section);
+      if (item.classList.contains('nav-item')) {
+        showSection(item.dataset.section);
+      } else if (item.classList.contains('nav-itemHome')) {
+        redirectToHome();
+      }
+      if (sidebar && window.innerWidth <= 768) {
+        sidebar.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
+      }
     });
   });
 
@@ -119,10 +132,29 @@ function setupNavigation() {
   } else {
     console.error("Bouton sidebarToggle non trouvé");
   }
+
+  const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+  if (sidebarCloseBtn) {
+    sidebarCloseBtn.addEventListener('click', () => {
+      if (sidebar) sidebar.classList.remove('active');
+      if (overlay) overlay.classList.remove('active');
+    });
+  } else {
+    console.error("Bouton sidebarCloseBtn non trouvé");
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', () => {
+      if (sidebar) sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+  } else {
+    console.error("Overlay non trouvé");
+  }
 }
 
 function toggleActiveNavItem(activeItem) {
-  document.querySelectorAll('.nav-item').forEach(item => {
+  document.querySelectorAll('.nav-item, .nav-itemHome').forEach(item => {
     item.classList.remove('active');
   });
   activeItem.classList.add('active');
@@ -130,10 +162,12 @@ function toggleActiveNavItem(activeItem) {
 
 function toggleMobileSidebar() {
   const sidebar = document.querySelector('.dashboard-sidebar');
-  if (sidebar) {
+  const overlay = document.getElementById('overlay');
+  if (sidebar && overlay) {
     sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
   } else {
-    console.error("Sidebar non trouvée");
+    console.error("Sidebar ou overlay non trouvé");
   }
 }
 
@@ -161,6 +195,7 @@ function updateDashboardTitle(section) {
     console.error("dashboardTitle non trouvé");
   }
 }
+
 
 function loadSectionData(section) {
   switch(section) {

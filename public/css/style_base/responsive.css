@@ -1,14 +1,21 @@
 /* Responsive Design */
         @media (max-width: 992px) {
             .nav-menu,
-            .nav-buttons {
-                display: none;
-            }
+  .nav-buttons,
+  .profile-dropdown {
+    display: none !important;
+  }
 
-            .mobile-menu-btn {
-                display: block;
-            }
+  .mobile-menu-btn {
+    display: block;
+  }
 
+  .mobile-menu.active .nav-menu,
+  .mobile-menu.active .nav-buttons,
+  .mobile-menu.active .profile-dropdown {
+    display: flex !important;
+  }
+    
             .hero {
                 padding: 5rem 0;
             }
@@ -16,7 +23,9 @@
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-        }
+    }
+
+        
 
         @media (max-width: 768px) {
             .hero {

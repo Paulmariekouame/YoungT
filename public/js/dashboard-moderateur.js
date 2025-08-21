@@ -40,19 +40,74 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function setupNavigation() {
-  document.querySelectorAll('.nav-item').forEach(item => {
+  const navItems = document.querySelectorAll('.nav-item, .nav-itemHome');
+  const sidebar = document.querySelector('.dashboard-sidebar');
+  const overlay = document.getElementById('overlay');
+
+  if (!navItems.length) {
+    console.error("Aucun élément de navigation trouvé");
+    return;
+  }
+
+  navItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
-      const section = item.getAttribute('data-section');
-      showSection(section);
+      toggleActiveNavItem(item);
+      if (item.classList.contains('nav-item')) {
+        const section = item.getAttribute('data-section');
+        showSection(section);
+      } else if (item.classList.contains('nav-itemHome')) {
+        window.location.href = '../index.html';
+      }
+      if (sidebar && window.innerWidth <= 768) {
+        sidebar.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
+      }
     });
   });
 
   const sidebarToggle = document.getElementById('sidebarToggle');
   if (sidebarToggle) {
-    sidebarToggle.addEventListener('click', () => {
-      document.querySelector('.dashboard-sidebar')?.classList.toggle('active');
+    sidebarToggle.addEventListener('click', toggleMobileSidebar);
+  } else {
+    console.error("Bouton sidebarToggle non trouvé");
+  }
+
+  const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+  if (sidebarCloseBtn) {
+    sidebarCloseBtn.addEventListener('click', () => {
+      if (sidebar) sidebar.classList.remove('active');
+      if (overlay) overlay.classList.remove('active');
     });
+  } else {
+    console.error("Bouton sidebarCloseBtn non trouvé");
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', () => {
+      if (sidebar) sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+  } else {
+    console.error("Overlay non trouvé");
+  }
+}
+
+function toggleActiveNavItem(activeItem) {
+  document.querySelectorAll('.nav-item, .nav-itemHome').forEach(item => {
+    item.classList.remove('active');
+  });
+  activeItem.classList.add('active');
+}
+
+function toggleMobileSidebar() {
+  const sidebar = document.querySelector('.dashboard-sidebar');
+  const overlay = document.getElementById('overlay');
+  if (sidebar && overlay) {
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+  } else {
+    console.error("Sidebar ou overlay non trouvé");
   }
 }
 
@@ -79,6 +134,9 @@ function showSection(section) {
         loadReports();
         break;
     }
+  } else {
+    console.error(`Section ${section} ou dashboardTitle non trouvé`);
+    showNotification(`Erreur : Section ${section} non trouvée`, 'error');
   }
 }
 

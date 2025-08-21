@@ -31,8 +31,9 @@ export function setupAuthStateListener() {
   const logoutBtn = document.getElementById('logoutBtn');
   const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
 
-  if (!navButtons || !profileDropdown) {
-    console.warn("Éléments navButtons ou profileDropdown non trouvés");
+  // Vérification stricte des éléments
+  if (!navButtons || !profileDropdown || !mobileNavButtons || !mobileProfileDropdown) {
+    console.warn("Certains éléments de navigation (navButtons, profileDropdown, mobileNavButtons, mobileProfileDropdown) non trouvés");
     return;
   }
 
@@ -41,16 +42,26 @@ export function setupAuthStateListener() {
     const basePath = isInRoot ? '' : '../';
 
     if (user) {
+      // Utilisateur connecté - Desktop
       navButtons.style.display = 'none';
       profileDropdown.style.display = 'block';
-      if (mobileNavButtons) mobileNavButtons.style.display = 'none';
-      if (mobileProfileDropdown) mobileProfileDropdown.style.display = 'block';
       
+      // Utilisateur connecté - Mobile
+      mobileNavButtons.style.display = 'none'; // Masquer les boutons de connexion/inscription
+      mobileProfileDropdown.style.display = 'flex'; // Afficher le menu déroulant du profil
+      
+      // Forcer l'application des styles pour éviter les conflits CSS
+      mobileNavButtons.style.setProperty('display', 'none', 'important');
+      mobileProfileDropdown.style.setProperty('display', 'flex', 'important');
+
+      // Affichage de l'email utilisateur
       if (userEmail) userEmail.textContent = user.email || 'Utilisateur';
       if (mobileUserEmail) mobileUserEmail.textContent = user.email || 'Utilisateur';
 
+      // Récupération du rôle utilisateur
       const role = await getUserRole(user.uid, user.email);
 
+      // Gestion du lien tableau de bord - Desktop
       if (dashboardLink) {
         if (role === 'artist') {
           dashboardLink.style.display = 'block';
@@ -63,6 +74,7 @@ export function setupAuthStateListener() {
         }
       }
 
+      // Gestion du lien tableau de bord - Mobile
       if (mobileDashboardLink) {
         if (role === 'artist') {
           mobileDashboardLink.style.display = 'block';
@@ -75,8 +87,12 @@ export function setupAuthStateListener() {
         }
       }
 
+      // Gestion de la déconnexion - Desktop
       if (logoutBtn) {
-        logoutBtn.onclick = async (e) => {
+        const newLogoutBtn = logoutBtn.cloneNode(true);
+        logoutBtn.parentNode.replaceChild(newLogoutBtn, logoutBtn);
+        
+        document.getElementById('logoutBtn').onclick = async (e) => {
           e.preventDefault();
           try {
             await signOut(auth);
@@ -90,8 +106,12 @@ export function setupAuthStateListener() {
         };
       }
 
+      // Gestion de la déconnexion - Mobile
       if (mobileLogoutBtn) {
-        mobileLogoutBtn.onclick = async (e) => {
+        const newMobileLogoutBtn = mobileLogoutBtn.cloneNode(true);
+        mobileLogoutBtn.parentNode.replaceChild(newMobileLogoutBtn, mobileLogoutBtn);
+        
+        document.getElementById('mobileLogoutBtn').onclick = async (e) => {
           e.preventDefault();
           try {
             await signOut(auth);
@@ -105,10 +125,21 @@ export function setupAuthStateListener() {
         };
       }
     } else {
+      // Utilisateur non connecté - Desktop
       navButtons.style.display = 'flex';
       profileDropdown.style.display = 'none';
-      if (mobileNavButtons) mobileNavButtons.style.display = 'flex';
-      if (mobileProfileDropdown) mobileProfileDropdown.style.display = 'none';
+      
+      // Utilisateur non connecté - Mobile
+      mobileNavButtons.style.display = 'flex';
+      mobileProfileDropdown.style.display = 'none';
+      
+      // Forcer l'application des styles pour éviter les conflits CSS
+      mobileNavButtons.style.setProperty('display', 'flex', 'important');
+      mobileProfileDropdown.style.setProperty('display', 'none', 'important');
+
+      // Masquer les liens de tableau de bord
+      if (dashboardLink) dashboardLink.style.display = 'none';
+      if (mobileDashboardLink) mobileDashboardLink.style.display = 'none';
     }
   });
 }

@@ -20,10 +20,17 @@ function setupMobileMenu() {
     mobileMenu.classList.toggle('active');
     overlay.classList.toggle('active');
     document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    
+    // Changer l'icône du bouton
     const icon = mobileMenuBtn.querySelector('i');
     if (icon) {
-      icon.classList.toggle('fa-bars');
-      icon.classList.toggle('fa-times');
+      if (mobileMenu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
     }
   });
 
@@ -31,6 +38,8 @@ function setupMobileMenu() {
     mobileMenu.classList.remove('active');
     overlay.classList.remove('active');
     document.body.style.overflow = '';
+    
+    // Remettre l'icône hamburger
     const icon = mobileMenuBtn.querySelector('i');
     if (icon) {
       icon.classList.remove('fa-times');
@@ -38,12 +47,14 @@ function setupMobileMenu() {
     }
   });
 
+  // Fermer le menu en cliquant sur les liens
   const navLinks = document.querySelectorAll('.mobile-menu .nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('active');
       overlay.classList.remove('active');
       document.body.style.overflow = '';
+      
       const icon = mobileMenuBtn.querySelector('i');
       if (icon) {
         icon.classList.remove('fa-times');
@@ -52,6 +63,7 @@ function setupMobileMenu() {
     });
   });
 }
+
 
 function setupTrackControls() {
   // Écouter les clics sur les boutons de lecture
