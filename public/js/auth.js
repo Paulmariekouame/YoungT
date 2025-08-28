@@ -3,7 +3,7 @@ import { auth, db, doc, getDoc, signOut, onAuthStateChanged } from './firebase.j
 import { showNotification } from './notifications.js';
 import { getFirebaseErrorMessage } from './firebase.js';
 
-const moderatorEmails = ["admin@youngtalent.com", "moderator@youngtalent.com"];
+const moderatorEmails = ["emmanuelbilson234@gmail.com", "moderator@youngtalent.com"];
 
 export async function getUserRole(uid, email) {
   if (!uid || !email) return 'fan';
